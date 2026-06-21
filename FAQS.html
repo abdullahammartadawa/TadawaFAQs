@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadawa Portal FAQs</title>
+    <style>
+        :root {
+            --primary: #2b6cb0;
+            --primary-hover: #1a4e8a;
+            --bg: #f7fafc;
+            --text: #2d3748;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --category-bg: #edf2f7;
+            --category-text: #2b6cb0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        /* Master Utility Controls */
+        .controls-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .search-container {
+            flex: 1;
+            min-width: 280px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .search-bar:focus {
+            border-color: var(--primary);
+        }
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+        .lang-btn {
+            padding: 10px 18px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Language Toggle Wrappers */
+        .lang-wrapper {
+            display: none;
+        }
+        .lang-wrapper.active {
+            display: block;
+        }
+
+        /* Level 1: Category Blocks (Collapsible) */
+        .category-block {
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--white);
+        }
+        .category-header {
+            background: var(--category-bg);
+            color: var(--category-text);
+            padding: 16px 20px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+        .category-header:hover {
+            background: #e2e8f0;
+        }
+        .category-header .cat-chevron {
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+        .category-block.cat-open .category-header .cat-chevron {
+            transform: rotate(180deg);
+        }
+        .category-content {
+            display: none;
+            padding: 10px 20px;
+            border-top: 1px solid var(--border);
+        }
+        .category-block.cat-open .category-content {
+            display: block;
+        }
+
+        /* Level 2: Question Rows (Collapsible Inside Category) */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .item-chevron {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            transition: transform 0.2s ease;
+        }
+        .faq-item.open .item-chevron {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+        .faq-answer {
+            display: none;
+            color: #4a5568;
+            padding-top: 10px;
+            padding-right: 20px;
+            white-space: pre-line;
+            font-size: 0.98rem;
+        }
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+        
+        /* Video Embed Styles */
+        .faq-video {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            background-color: #000;
+            display: block;
+        }
+        .note-box {
+            margin-top: 8px;
+            background: #edf2f7;
+            padding: 10px 15px;
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+            font-size: 0.92rem;
+            border-radius: 4px;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #718096;
+            font-size: 1.1rem;
+            padding: 20px 0;
+        }
+        
+        /* RTL Text Direction */
+        .rtl {
+            direction: rtl;
+        }
+        .rtl .faq-answer {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+        .rtl .note-box {
+            border-left: none;
+            border-right: 4px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Tadawa Portal FAQs / قاعدة بيانات تداوى</h1>
+    
+    <!-- Shared Utility Filters -->
+    <div class="controls-row">
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-bar" placeholder="Search across all FAQs... / ابحث في جميع الأسئلة الشائعة...">
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">English</button>
+            <button class="lang-btn" id="btn-ar" onclick="switchLang('ar')">العربية</button>
+        </div>
+    </div>
+
+    <div id="no-results-msg" class="no-results">No matches found. / لم يتم العثور على نتائج.</div>
+
+    <!-- ==================== ENGLISH SECTION ==================== -->
+    <div id="global-en" class="lang-wrapper active">
+        
+        <!-- Category 1 -->
+        <div class="category-block">
+            <div class="category-header">Tadawa App FAQ <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">What is Tadawa and how does it work? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">
+                        Tadawa operates as a hybrid healthcare provider in Jordan, utilizing a highly integrated model that merges a sophisticated digital telehealth platform with robust physical clinical hubs. The company functions not merely as a software vendor but as a comprehensive healthcare orchestrator, strategically focused on delivering the primary care model ensure continuous, patient-centric medical management across all demographics.
+                        
+                        <!-- Video Placeholder Example (Swap 'src' with your path) -->
+                        <video controls class="faq-video">
+                            <source src="videos/what_is_tadawa.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I create a Tadawa account? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">1.Download the App:Download the Tadawa application from your device's app store and open it.
+2.Start Registration:Tap on Create Account.
+3.Enter Identification Details:Provide your Phone Number and your National ID or Passport Number.
+4.Create a Password:Must meet security requirements.Set a secure password.
+5.Add Personal Information:Fill in your Date of Birth, Email address, and Gender.
+6.Verify via WhatsApp:You will receive a One-Time Password (OTP) via WhatsApp. Enter this code into the app to activate your account.<div class="note-box"><strong>Note:</strong> The Password must be at least 8 characters long and include at least 1 uppercase letter, 1 number, and 1 special symbol.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I add my insurance card? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Settings⚙️ - insurance \nThen enter the insurance information, including the insurance company name, insurance card number, and expiration date...</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I manage profiles for my family members under one account? or How do I add multiple sub-accounts under my main account? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Click on your name at the top of the screen, then select “Add New Account.” Enter the required information, and the sub-account will be added and appear under your main account.<div class="note-box"><strong>Note:</strong> There is no need to enter a phone number, as the sub-account will be automatically linked to the main account's phone number</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">I forgot my password. How can I reset it? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Tap “Forgot Password”, enter your National ID or Passport number, create a new password, and then enter the OTP sent to your WhatsApp.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I book a consultation with a doctor? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Choose a visit type: Office Visit, Remote Visit, Treat me now or Home Visit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I book an Office Visit consultation? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Select Office Visit and choose the specialization you need.
+Choose your doctor and tap Go to Appointments.
+Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I book a Remote Visit consultation? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Select Remote Visit and choose the specialization you need.
+Choose your doctor and tap Go to Appointments.
+Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I book a Home Visit consultation? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Coming soon</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between a video consultation and a clinic visit? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">A video consultation saves you time and effort—there is no need to leave your house, no waiting room time, and you can choose the exact time that suits you without traveling long distances to see your specialist.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between Remote visit, Treat me now and Urgent call? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">"Remote Visit" is designed for non-urgent medical needs, routine check-ups, and follow-ups. It allows patients to schedule appointments in advance, choosing the specific date, time, and the doctor they want.
+
+"Treat Me Now" is an innovative urgent care module providing instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.
+
+"Urgent Call" is an innovative urgent care module that allows you to choose the specific doctor you want for instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I cancel or reschedule my appointment? Is there a fee? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">No fees will be charged if the appointment is canceled more than two hours before the scheduled time.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What should I do if the doctor doesn't join the video call? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Try calling again. The patient will be fully compensated with an alternative visit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my medical reports and prescriptions after the consultation? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">My tadawa-completed-choose your doctor-Consultation
+Or
+My health-test results-completed-choose your doctor-Consultation</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my Medications? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">You can find your medications under "My Health" There, you can view your complete medication history, including all past and current prescriptions.<div class="note-box"><strong>Note:</strong> Turn on notifications to get reminders for your medication schedule</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my Appointments? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">You can find your appointments under "My Health" There, you can view all your completed, cancelled, and upcoming appointments.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my care plan? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">My Health section, Here, you can find all the information related to your healthcare plan and easily follow the recommended care steps.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my Test results? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">My Health section, where you can access all your laboratory and diagnostic test results in one place. This allows you to review your records anytime and keep track of your health information more easily.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my Vaccines? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">My Health section , where you can find a complete record of all the vaccinations you have received. Keeping your vaccination history in one place makes it easier to stay informed and access it whenever needed.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my Allergies? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">My Health section, where you can view all your recorded allergies in one place. Keeping this information up to date helps healthcare providers make safer and more informed treatment decisions.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find my Vitals and trends? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">My Health, select Vital and Trends to update and monitor measurements including height, weight, body temperature, heart rate, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels.<div class="note-box"><strong>Note:</strong> Track and update your vital signs regularly , including height, weight, heart rate, body temperature, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels, to monitor changes and maintain an up-to-date health record.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-block">
+            <div class="category-header">Secretary <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">How can I access the Tadawa website? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">To access the Tadawa website, please open an internet browser, then enter the following link in the address bar:
+https://provider.tadawa.com/auth/login</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find today’s booked appointments? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From the website’s sidebar, click on Dashboard to view today’s booked appointments.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I view a specific doctor’s schedule? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard, choose the Doctor name, and his/her schedule will appear.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I check a patient’s profile and basic info? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click on any booked appointment -> a sidebar will open containing the patient’s file and information.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I change the appointment state to "checked in"? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click on the patient's booked appointment -> click on the status dropdown list -> select Check In</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I add the patient’s vital signs? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click on the patient’s appointment -> scroll down to the "Vitals" section -> click "Add" -> enter the values -> click "Save"</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I add the patient’s insurance info? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click on the patient’s appointment -> scroll down to the "Insurance details" section -> click "Add" -> enter the details -> click "Save"</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I collect a cash payment? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click on the patient’s appointment -> scroll down to "Payment Status" -> select Cash -> click "Collect"</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I book an appointment for a patient? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click "Book Appointment" -> fill in the patient's phone number or national ID to search for their file -> select the doctor, date, and time -> click "Confirm Booking"</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I print an invoice? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From Dashboard -> click on the patient’s appointment -> scroll down to "Invoices" -> click on the "Print" icon next to the required invoice.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-block">
+            <div class="category-header">Assistant Doctor <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">How can I see patients waiting in the queue? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From the website’s sidebar, click on "Queue" to view patients waiting.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I open a patient’s medical file? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From the Queue -> click on "Open File" next to the patient's name.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I log the patient's chief complaint? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient's file -> go to the "Chief Complaint" tab -> enter the complaint -> click "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I update the patient’s allergy status? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient’s file -> click on the "Allergies" tab -> click "Add Allergy" -> select or type the allergy -> click "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where do I document current medications the patient is taking? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient's file -> click on "Current Medications" -> click "Add" -> enter details -> click "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I review past vitals trends? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient's file -> click on "Vitals History" to see a chronological list or graphs of past records.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I route the patient to the Family Doctor? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient's file -> click "Refer/Route" at the top right -> select "Family Doctor" -> click "Confirm".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I see uploaded lab or radiology files from the patient? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient's file -> navigate to the "Uploaded Documents" or "External Records" tab.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category-block">
+            <div class="category-header">Family Doctor <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">Where do I view routed patients ready for consultation? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">From the sidebar menu, select "Consultation Room" or "My Queue".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I start a telehealth video session with a remote patient? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Inside the patient's consultation file -> click on the "Start Video Call" button at the top toolbar.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I write my clinical assessment and progress notes? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Go to the "Soap Notes" or "Clinical Assessment" tab inside the electronic record file workspace.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I issue an electronic prescription (e-Rx)? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Click on the "Prescriptions" tab -> click "Add Medication" -> search by generic or brand name -> input dosages, duration, and frequency -> click "Authorize/Sign".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I order lab tests or diagnostic imaging scans? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Navigate to "Orders" -> choose "Lab/Radiology Order" -> tick the required panels or search specific tests -> click "Submit Order".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where do I select and link ICD-10 diagnostic codes? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">In the "Diagnosis" section -> type symptoms or codes into the autocomplete search input field -> select the appropriate accurate matching condition.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I establish a chronic care plan sequence for the patient? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Open the "Care Plan" module panel -> fill out lifestyle guidelines, intervals for vital checks, and planned control follow-up goals.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I refer a patient to an external specialty clinical hub? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Click on "Referrals" -> choose the specific specialist field branch or center network -> issue an official automated appointment invitation request.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I finalize and close the medical consultation session? <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">Review all inputs -> click the main "Complete Encounter/Sign Off" action item option at the base of the page layout.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARABIC SECTION ==================== -->
+    <div id="global-ar" class="lang-wrapper rtl">
+        
+        <!-- Category 1 (AR) -->
+        <div class="category-block">
+            <div class="category-header">أسئلة تطبيق تداوى الشائعة <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">ما هو تطبيق تداوى وكيف يعمل؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">تعمل شركة تداوى كمزود رعاية صحية هجين في الأردن، مستخدمةً نموذجًا متكاملًا يجمع بين منصة رقمية متطورة للرعاية الصحية عن بُعد ومراكز طبية فعلية قوية. ولا تقتصر وظيفة الشركة على كونها موردًا للبرمجيات فحسب، بل هي أيضًا جهة تنسيق شاملة للرعاية الصحية، تركز استراتيجيًا على تقديم نموذج الرعاية الصحية الأولية لضمان إدارة طبية مستمرة تتمحور حول المريض في جميع الفئات العمرية والاجتماعية.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف أنشئ حسابًا على تداوى؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">١. تحميل التطبيق: حمّل تطبيق تاداوا من متجر التطبيقات على جهازك وافتحه.
+٢. بدء التسجيل: اضغط على "إنشاء حساب".
+٣. أدخل بيانات التعريف: أدخل رقم هاتفك ورقم هويتك الوطنية أو جواز سفرك
+٤. أنشئ كلمة مرور: يجب أن تستوفي متطلبات الأمان. اختر كلمة مرور قوية.
+٥. أضف معلوماتك الشخصية: أدخل تاريخ ميلادك، وبريدك الإلكتروني، وجنسك.
+٦. فعّل حسابك عبر واتساب: ستتلقى رمز التحقق لمرة واحدة (OTP) عبر واتساب. أدخل هذا الرمز في التطبيق لتفعيل حسابك.<div class="note-box"><strong>ملاحظة:</strong> يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وأن تتضمن حرفًا كبيرًا واحدًا على الأقل، ورقمًا واحدًا على الأقل، ورمزًا خاصًا واحدًا على الأقل.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف أضيف بطاقة التأمين الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">الاعدادات⚙️- التأمين - ثم أضف معلومات التأمين، بما في ذلك اسم شركة التأمين، ورقم بطاقة التأمين، وتاريخ انتهاء التأمين...</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">هل يمكنني إدارة ملفات تعريف أفراد عائلتي من خلال حساب واحد؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">انقر على اسمك في أعلى الشاشة، ثم حدد "إضافة حساب جديد". أدخل المعلومات المطلوبة، وسيتم إضافة الحساب الفرعي وسيظهر تحت حسابك الرئيسي.<div class="note-box"><strong>ملاحظة:</strong> لا حاجة لادخال رقم الهاتف حيث سيتم ربط الحساب الفرعي برقم الهاتف الخاص بالحساب الرئيسي تلقائيا</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">نسيت كلمة المرور الخاصة بي. كيف يمكنني استعادتها؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">انقر على "نسيت كلمة المرور"، وأدخل رقم هويتك الوطنية أو رقم جواز سفرك، وأنشئ كلمة مرور جديدة، ثم أدخل رمز التحقق المرسل إلى تطبيق واتساب الخاص بك.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف أحجز موعد استشارة مع طبيب؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">اختر نوع الزيارة: زيارة مكتبية، استشارة عن بعد، أو زيارة منزلية.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني حجز موعد استشارة في المكتب؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">اختر "زيارة الطبيب" ثم حدد التخصص المطلوب.
+اختر طبيبك ثم اضغط على "الذهاب إلى المواعيد".
+حدد التاريخ والوقت المناسبين لك لتأكيد حجزك فورًا.<div class="note-box"><strong>ملاحظة:</strong> إذا فعّلت خيار التأمين، سيعرض التطبيق الأطباء المشمولين بتأمينك فقط.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني حجز موعد استشارة عن بُعد؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">اختر "استشارة عن بُعد" ثم حدد التخصص المطلوب.
+اختر طبيبك ثم اضغط على "الذهاب إلى المواعيد".
+حدد التاريخ والوقت المناسبين لك لتأكيد حجزك فورًا.<div class="note-box"><strong>ملاحظة:</strong> إذا فعّلت خيار التأمين، سيعرض التطبيق الأطباء المشمولين بتأمينك فقط.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني حجز زيارة منزلية؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">قيد التنفيذ</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ما الفرق بين الاستشارة عبر الفيديو وزيارة العيادة؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">الاستشارة المرئية توفر عليك الوقت والجهد؛ فلا داعي لمغادرة المنزل أو الانتظار في العيادة، ويمكنك اختيار الوقت الذي يناسبك دون الحاجة لقطع مسافات طويلة لرؤية طبيبك المختص.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ما الفرق بين الاستشارة عن بعد، وعلاجي الآن، والمكالمة العاجلة؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">"استشارة عن بُعد" صُممت لتلبية الاحتياجات الطبية غير العاجلة، والفحوصات الروتينية، والمتابعات. وتتيح هذه الخدمة للمرضى حجز المواعيد مسبقًا، واختيار التاريخ والوقت والطبيب الذي يرغبون في مقابلته.
+
+"عالجني الان" عبارة عن وحدة رعاية عاجلة مبتكرة توفر استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، وتعمل كبديل رقمي منخفض التكلفة لزيارات غرف الطوارئ المكلفة.
+
+"مكالمة عاجلة" عبارة عن وحدة رعاية عاجلة مبتكرة تتيح لك اختيار الطبيب المحدد الذي تريده لإجراء استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، مما يوفر بديلاً رقميًا منخفض التكلفة لزيارات غرف الطوارئ المكلفة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">هل يمكنني إلغاء موعدي أو إعادة جدولته؟ هل هناك رسوم؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">لن يتم تحصيل أي رسوم إذا تم إلغاء الموعد قبل أكثر من ساعتين من الموعد المحدد.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا أفعل إذا لم ينضم الطبيب إلى مكالمة الفيديو؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">يُرجى المحاولة مرة أخرى. سيتم تعويض المريض بالكامل من خلال زيارة بديلة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين أجد تقاريري الطبية ووصفاتي الطبية بعد الاستشارة؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">تداوى - المكتملة - (اختر طبيبك)-التشخيص
+أو اكتملت نتائج فحوصاتي الصحية - اختر طبيبك</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد الادوية الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">يمكنك العثور على أدويتك ضمن قسم "صحتي". هناك، يمكنك الاطلاع على تاريخ أدويتك الكامل، بما في ذلك جميع الوصفات الطبية السابقة والحالية.<div class="note-box"><strong>ملاحظة:</strong> قم بتفعيل الإشعارات لتلقي تذكيرات بمواعيد تناول أدويتك</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد المواعيد الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">يمكنك العثور على مواعيدك ضمن "صحتي"، يمكنك الاطلاع على جميع مواعيدك المكتملة والملغاة والقادمة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد خطة الرعاية الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">قسم صحتي، هنا يمكنك العثور على جميع المعلومات المتعلقة بخطة الرعاية الصحية الخاصة بك واتباع خطوات الرعاية الموصى بها بسهولة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد نتائج الفحوصات الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم "صحتي" في تطبيق تداوى، حيث يمكنك الوصول إلى جميع نتائج فحوصاتك المخبرية والتشخيصية في مكان واحد. يتيح لك هذا مراجعة سجلاتك في أي وقت ومتابعة معلوماتك الصحية بسهولة أكبر.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد اللقاحات الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">قسم "صحتي" حيث يمكنك الاطلاع على سجل كامل لجميع اللقاحات التي تلقيتها. إن الاحتفاظ بسجل تطعيماتك في مكان واحد يُسهّل عليك البقاء على اطلاع والوصول إليه عند الحاجة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد الحساسية؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">قسم "صحتي" حيث يمكنك الاطلاع على جميع أنواع الحساسية المسجلة لديك في مكان واحد. يساعد تحديث هذه المعلومات مقدمي الرعاية الصحية على اتخاذ قرارات علاجية أكثر أمانًا واستنارة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">اين اجد القراءات الحيوية الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">في قسم "صحتي"، اختر "البيانات الحيوية والاتجاهات" لتحديث ومراقبة القياسات بما في ذلك الطول والوزن ودرجة حرارة الجسم ومعدل ضربات القلب وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم.<div class="note-box"><strong>ملاحظة:</strong> قم بتتبع وتحديث علاماتك الحيوية بانتظام ، بما في ذلك الطول والوزن ومعدل ضربات القلب ودرجة حرارة الجسم وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم، لمراقبة التغييرات والحفاظ على سجل صحي محدث.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 2 (AR) -->
+        <div class="category-block">
+            <div class="category-header">أسئلة قسم السكرتارية <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني الدخول إلى موقع تداوى الإلكتروني؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">للدخول إلى موقع تداوى الإلكتروني، يرجى فتح أحد متصفحات الإنترنت ، ثم إدخال الرابط التالي في شريط البحث:
+ https://provider.tadawa.com/auth/login</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني العثور على المواعيد المحجوزة لليوم؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على Dashboard للاطلاع على المواعيد المحجوزة لليوم.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني الاطلاع على جدول مواعيد طبيب معين؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard، اختر اسم الطبيب، وسيظهر جدول المواعيد الخاص به.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني التحقق من ملف المريض ومعلوماته الأساسية؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على أي موعد محجوز -> سيفتح شريط جانبي يحتوي على ملف المريض ومعلوماته.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تغيير حالة الموعد إلى "Checked In"؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على موعد المريض المحجوز -> اضغط على القائمة المنسدلة الخاصة بالحالة (Status) -> اختر Check In.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني إضافة العلامات الحيوية للمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على موعد المريض -> انزل إلى قسم "Vitals" -> اضغط على "Add" -> أدخل القيم -> اضغط على "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني إضافة معلومات التأمين الخاصة بالمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على موعد المريض -> انزل إلى قسم "Insurance details" -> اضغط على "Add" -> أدخل التفاصيل -> اضغط على "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تحصيل الدفع النقدي (Cash)؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على موعد المريض -> انزل إلى "Payment Status" -> اختر Cash -> اضغط على "Collect".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني حجز موعد لمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على "Book Appointment" -> أدخل رقم هاتف المريض أو الرقم الوطني للبحث عن ملفه -> اختر الطبيب والتاريخ والوقت -> اضغط على "Confirm Booking".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني طباعة الفاتورة؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الـ Dashboard -> اضغط على موعد المريض -> انزل إلى "Invoices" -> اضغط على أيقونة "Print" بجانب الفاتورة المطلوبة.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3 (AR) -->
+        <div class="category-block">
+            <div class="category-header">أسئلة الطبيب المساعد <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني رؤية المرضى المنتظرين في قائمة الانتظار؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على "Queue" لعرض قائمة المرضى المنتظرين.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني فتح الملف الطبي للمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من قائمة الانتظار (Queue) -> اضغط على "Open File" بجانب اسم المريض.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني تسجيل الشكوى الرئيسية (Chief Complaint) للمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف المريض -> انتقل إلى علامة التبويب "Chief Complaint" -> أدخل الشكوى -> اضغط على "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تحديث حالة الحساسية للمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف المريض -> اضغط على علامة التبويب "Allergies" -> اضغط على "Add Allergy" -> اختر أو اكتب نوع الحساسية -> اضغط على "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين أقوم بتوثيق الأدوية الحالية التي يتناولها المريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف المريض -> اضغط على "Current Medications" -> اضغط على "Add" -> أدخل التفاصيل -> اضغط على "Save".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني مراجعة مؤشرات العلامات الحيوية السابقة للمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف المريض -> اضغط على "Vitals History" لمشاهدة قائمة زمنية أو رسوم بيانية للسجلات السابقة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف أقوم بتوجيه المريض إلى طبيب الأسرة؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف المريض -> اضغط على "Refer/Route" في أعلى اليمين -> اختر "Family Doctor" -> اضغط على "Confirm".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني رؤية ملفات المختبر أو الأشعة التي قام المريض بتحميلها؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف المريض -> انتقل إلى علامة التبويب "Uploaded Documents" أو "External Records".</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 4 (AR) -->
+        <div class="category-block">
+            <div class="category-header">أسئلة طبيب الأسرة <span class="cat-chevron">▼</span></div>
+            <div class="category-content">
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني رؤية المرضى الموجهين الجاهزين للاستشارة الطبية؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">من قائمة الشريط الجانبي، اختر "Consultation Room" أو "My Queue".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني بدء جلسة فيديو طبية عن بُعد مع المريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">داخل ملف استشارة المريض -> اضغط على زر "Start Video Call" في شريط الأدوات العلوي.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني كتابة التقييم السريري والملاحظات الطبية الخاصة بي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">انتقل إلى علامة التبويب "Soap Notes" أو "Clinical Assessment" داخل مساحة عمل السجل الإلكتروني.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني إصدار وصفة طبية إلكترونية (e-Rx)؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">اضغط على علامة التبويب "Prescriptions" -> اضغط على "Add Medication" -> ابحث بالاسم العلمي أو التجاري -> أدخل الجرعات والمدة والتكرار -> اضغط على "Authorize/Sign".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني طلب الفحوصات المخبرية أو صور الأشعة التشخيصية؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">انتقل إلى "Orders" -> اختر "Lab/Radiology Order" -> حدد الفحوصات المطلوبة أو ابحث عن فحوصات محددة -> اضغط على "Submit Order".</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني اختيار وربط الرموز التشخيصية (ICD-10)؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">في قسم "Diagnosis" -> اكتب الأعراض أو الرموز في حقل البحث التلقائي -> اختر الحالة المطابقة بدقة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني وضع خطة رعاية للأمراض المزمنة للمريض؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">افتح لوحة "Care Plan" -> املأ الإرشادات الحياتية، وفترات فحص العلامات الحيوية، وأهداف المتابعة المخطط لها.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تحويل مريض إلى مركز طبي تخصصي خارجي؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">اضغط على "Referrals" -> اختر المجال التخصصي أو شبكة المراكز المحددة -> أصدر طلب تحويل رسمي مؤتمت.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف أقوم بإنهاء وإغلاق جلسة الاستشارة الطبية بالكامل؟ <span class="item-chevron">▼</span></div>
+                    <div class="faq-answer">راجع جميع المدخلات -> اضغط على خيار الإجراء الرئيسي "Complete Encounter/Sign Off" في أسفل الصفحة.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let currentLang = 'en';
+
+    // Event Router for Two Levels of Accordions
+    document.addEventListener('click', function(e) {
+        // Level 1: Main Category Headers
+        const catHeader = e.target.closest('.category-header');
+        if (catHeader) {
+            const block = catHeader.parentElement;
+            block.classList.toggle('cat-open');
+            return;
+        }
+
+        // Level 2: Individual Question Panels
+        const question = e.target.closest('.faq-question');
+        if (question) {
+            const parent = question.parentElement;
+            parent.classList.toggle('open');
+        }
+    });
+
+    // Smart Multi-Level Search Filter Engine
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', filterFAQs);
+
+    function filterFAQs() {
+        const query = searchInput.value.toLowerCase().trim();
+        const activeWrapper = document.getElementById(`global-${currentLang}`);
+        const categoryBlocks = activeWrapper.getElementsByClassName('category-block');
+        let absoluteTotalVisible = 0;
+
+        for (let block of categoryBlocks) {
+            const items = block.getElementsByClassName('faq-item');
+            let visibleInBlock = 0;
+
+            for (let item of items) {
+                const qText = item.querySelector('.faq-question').innerText.toLowerCase();
+                const aText = item.querySelector('.faq-answer').innerText.toLowerCase();
+
+                if (qText.includes(query) || aText.includes(query)) {
+                    item.style.display = 'block';
+                    visibleInBlock++;
+                    absoluteTotalVisible++;
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('open');
+                }
+            }
+
+            if (query !== '') {
+                if (visibleInBlock > 0) {
+                    block.style.display = 'block';
+                    block.classList.add('cat-open'); // Force expand parents to show matching search entries
+                } else {
+                    block.style.display = 'none';
+                    block.classList.remove('cat-open');
+                }
+            } else {
+                // If query is empty, reset back to tidy closed layout states
+                block.style.display = 'block';
+                block.classList.remove('cat-open');
+            }
+        }
+
+        const noResultsMsg = document.getElementById('no-results-msg');
+        noResultsMsg.style.display = (absoluteTotalVisible === 0) ? 'block' : 'none';
+    }
+
+    // Language Direction Settings
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.lang-wrapper').forEach(w => w.classList.remove('active'));
+        
+        document.getElementById(`global-${lang}`).classList.add('active');
+
+        const searchInput = document.getElementById('search-input');
+        if(lang === 'en') {
+            document.getElementById('btn-en').classList.add('active');
+            searchInput.style.direction = 'ltr';
+        } else {
+            document.getElementById('btn-ar').classList.add('active');
+            searchInput.style.direction = 'rtl';
+        }
+
+        // Reset query strings to cleanly swap contexts
+        searchInput.value = '';
+        filterFAQs();
+    }
+</script>
+
+</body>
+</html>
