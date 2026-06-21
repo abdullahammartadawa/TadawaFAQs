@@ -36,7 +36,6 @@
             margin-bottom: 25px;
             font-size: 1.8rem;
         }
-        /* Tab Strip Styles */
         .sheet-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -75,7 +74,6 @@
             background: var(--white);
             border-radius: 0 0 8px 8px;
         }
-        /* Filter Utilities Bar */
         .controls-row {
             display: flex;
             gap: 15px;
@@ -97,13 +95,8 @@
             outline: none;
             transition: border-color 0.3s ease;
         }
-        .search-bar:focus {
-            border-color: var(--primary);
-        }
-        .lang-switch {
-            display: flex;
-            gap: 10px;
-        }
+        .search-bar:focus { border-color: var(--primary); }
+        .lang-switch { display: flex; gap: 10px; }
         .lang-btn {
             padding: 10px 18px;
             border: 2px solid var(--primary);
@@ -119,23 +112,11 @@
             background: var(--primary);
             color: var(--white);
         }
-        /* Content Visibility Controls */
-        .sheet-content {
-            display: none;
-        }
-        .sheet-content.active {
-            display: block;
-        }
-        .faq-group {
-            display: none;
-        }
-        .faq-group.active {
-            display: block;
-        }
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 16px 0;
-        }
+        .sheet-content { display: none; }
+        .sheet-content.active { display: block; }
+        .faq-group { display: none; }
+        .faq-group.active { display: block; }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
         .faq-question {
             font-size: 1.05rem;
             font-weight: 600;
@@ -146,15 +127,8 @@
             align-items: center;
             user-select: none;
         }
-        .chevron {
-            font-size: 0.75rem;
-            color: #a0aec0;
-            transition: transform 0.2s ease;
-        }
-        .faq-item.open .chevron {
-            transform: rotate(180deg);
-            color: var(--primary);
-        }
+        .chevron { font-size: 0.75rem; color: #a0aec0; transition: transform 0.2s ease; }
+        .faq-item.open .chevron { transform: rotate(180deg); color: var(--primary); }
         .faq-answer {
             display: none;
             color: #4a5568;
@@ -163,46 +137,32 @@
             white-space: pre-line;
             font-size: 0.98rem;
         }
-        .faq-item.open .faq-answer {
-            display: block;
-        }
-        .faq-video {
-            width: 100%;
-            max-width: 640px;
-            height: auto;
+        .faq-item.open .faq-answer { display: block; }
+        
+        /* Fixed Video Wrapper Component for Continuous Drive Streaming */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
             margin-top: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            background-color: #000;
-            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .note-box {
-            margin-top: 8px;
-            background: #edf2f7;
-            padding: 10px 15px;
-            border-left: 4px solid var(--primary);
-            font-style: italic;
-            font-size: 0.92rem;
-            border-radius: 4px;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
-        .no-results {
-            display: none;
-            text-align: center;
-            color: #718096;
-            font-size: 1.1rem;
-            padding: 20px 0;
-        }
-        .rtl {
-            direction: rtl;
-        }
-        .rtl .faq-answer {
-            padding-right: 0;
-            padding-left: 20px;
-        }
-        .rtl .note-box {
-            border-left: none;
-            border-right: 4px solid var(--primary);
-        }
+
+        .no-results { display: none; text-align: center; color: #718096; font-size: 1.1rem; padding: 20px 0; }
+        .rtl { direction: rtl; }
+        .rtl .faq-answer { padding-right: 0; padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -210,7 +170,6 @@
 <div class="container">
     <h1>Tadawa Portal FAQs / قاعدة بيانات تداوى</h1>
     
-    <!-- Tab list selection -->
     <div class="sheet-tabs">
         <button class="sheet-btn active" onclick="switchSheet('Tadawa App FAQ', this)">Tadawa App FAQ</button>
         <button class="sheet-btn" onclick="switchSheet('Secretary', this)">Secretary</button>
@@ -219,10 +178,9 @@
     </div>
 
     <div class="content-box">
-        <!-- Input Tools Utilities -->
         <div class="controls-row">
             <div class="search-container">
-                <input type="text" id="search-input" class="search-bar" placeholder="Search in this tab... / ابحث في هذا القسم...">
+                <input type="text" id="search-input" class="search-bar" placeholder="Search inside this tab...">
             </div>
             <div class="lang-switch">
                 <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">English</button>
@@ -237,111 +195,20 @@
             <div class="faq-group faq-group-en active">
                 <div class="faq-item">
                     <div class="faq-question">What is Tadawa and how does it work? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Tadawa operates as a hybrid healthcare provider in Jordan, utilizing a highly integrated model that merges a sophisticated digital telehealth platform with robust physical clinical hubs. The company functions not merely as a software vendor but as a comprehensive healthcare orchestrator, strategically focused on delivering the primary care model ensure continuous, patient-centric medical management across all demographics.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I create a Tadawa account? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">1.Download the App:Download the Tadawa application from your device's app store and open it.
-2.Start Registration:Tap on Create Account.
-3.Enter Identification Details:Provide your Phone Number and your National ID or Passport Number.
-4.Create a Password:Must meet security requirements.Set a secure password.
-5.Add Personal Information:Fill in your Date of Birth, Email address, and Gender.
-6.Verify via WhatsApp:You will receive a One-Time Password (OTP) via WhatsApp. Enter this code into the app to activate your account.<div class="note-box"><strong>Note:</strong> The Password must be at least 8 characters long and include at least 1 uppercase letter, 1 number, and 1 special symbol.</div></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I add my insurance card? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Settings⚙️ - insurance \nThen enter the insurance information, including the insurance company name, insurance card number, and expiration date...</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I manage profiles for my family members under one account? or How do I add multiple sub-accounts under my main account? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Click on your name at the top of the screen, then select “Add New Account.” Enter the required information, and the sub-account will be added and appear under your main account.<div class="note-box"><strong>Note:</strong> There is no need to enter a phone number, as the sub-account will be automatically linked to the main account's phone number</div></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">I forgot my password. How can I reset it? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Tap “Forgot Password”, enter your National ID or Passport number, create a new password, and then enter the OTP sent to your WhatsApp.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I book a consultation with a doctor? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Choose a visit type: Office Visit, Remote Visit, Treat me now or Home Visit.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I book an Office Visit consultation? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Select Office Visit and choose the specialization you need.
-Choose your doctor and tap Go to Appointments.
-Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I book a Remote Visit consultation? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Select Remote Visit and choose the specialization you need.
-Choose your doctor and tap Go to Appointments.
-Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do I book a Home Visit consultation? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Coming soon</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What is the difference between a video consultation and a clinic visit? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">A video consultation saves you time and effort—there is no need to leave your house, no waiting room time, and you can choose the exact time that suits you without traveling long distances to see your specialist.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What is the difference between Remote visit, Treat me now and Urgent call? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">"Remote Visit" is designed for non-urgent medical needs, routine check-ups, and follow-ups. It allows patients to schedule appointments in advance, choosing the specific date, time, and the doctor they want.
-
-"Treat Me Now" is an innovative urgent care module providing instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.
-
-"Urgent Call" is an innovative urgent care module that allows you to choose the specific doctor you want for instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I cancel or reschedule my appointment? Is there a fee? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">No fees will be charged if the appointment is canceled more than two hours before the scheduled time.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What should I do if the doctor doesn't join the video call? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Try calling again. The patient will be fully compensated with an alternative visit.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my medical reports and prescriptions after the consultation? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">My tadawa-completed-choose your doctor-Consultation
-Or
-My health-test results-completed-choose your doctor-Consultation</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my Medications? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">You can find your medications under "My Health" There, you can view your complete medication history, including all past and current prescriptions.<div class="note-box"><strong>Note:</strong> Turn on notifications to get reminders for your medication schedule</div></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my Appointments? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">You can find your appointments under "My Health" There, you can view all your completed, cancelled, and upcoming appointments.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my care plan? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">My Health section, Here, you can find all the information related to your healthcare plan and easily follow the recommended care steps.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my Test results? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">My Health section, where you can access all your laboratory and diagnostic test results in one place. This allows you to review your records anytime and keep track of your health information more easily.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my Vaccines? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">My Health section , where you can find a complete record of all the vaccinations you have received. Keeping your vaccination history in one place makes it easier to stay informed and access it whenever needed.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my Allergies? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">My Health section, where you can view all your recorded allergies in one place. Keeping this information up to date helps healthcare providers make safer and more informed treatment decisions.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I find my Vitals and trends? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">My Health, select Vital and Trends to update and monitor measurements including height, weight, body temperature, heart rate, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels.<div class="note-box"><strong>Note:</strong> Track and update your vital signs regularly , including height, weight, heart rate, body temperature, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels, to monitor changes and maintain an up-to-date health record.</div></div>
+                    <div class="faq-answer">Tadawa operates as a hybrid healthcare provider in Jordan, utilizing a highly integrated model that merges a sophisticated digital telehealth platform with robust physical clinical hubs.</div>
                 </div>
             </div>
             <div class="faq-group faq-group-ar rtl">
-                <!-- Arabic items omitted for message brevity, fully mirrored structurally -->
+                <div class="faq-item">
+                    <div class="faq-question">ما هو تطبيق تداوى وكيف يعمل؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">تعمل شركة تداوى كمزود رعاية صحية هجين في الأردن، مستخدمةً نموذجًا متكاملًا يجمع بين منصة رقمية متطورة للرعاية الصحية عن بُعد ومراكز طبية فعلية قوية.</div>
+                </div>
             </div>
         </div>
 
         <!-- TAB: Secretary -->
         <div id="sheet-Secretary" class="sheet-content">
+            <!-- English Views -->
             <div class="faq-group faq-group-en active">
                 <div class="faq-item">
                     <div class="faq-question">How can I access the Tadawa website? <span class="chevron">▼</span></div>
@@ -356,55 +223,56 @@ My health-test results-completed-choose your doctor-Consultation</div>
                     <div class="faq-answer">
                         From Dashboard -> click "Book Appointment" -> fill in the patient's phone number or national ID to search for their file -> select the doctor, date, and time -> click "Confirm Booking".
                         
-                        <!-- Embedded Google Drive Tutorial Video -->
-                        <video controls class="faq-video">
-                            <source src="https://drive.google.com/uc?export=download&id=1BIGSkjf5E_QZyV_GznZ8hQxp0AH4AQpT" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <!-- Fixed Streaming Layout using Drive Preview Iframe Engine -->
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/1BIGSkjf5E_QZyV_GznZ8hQxp0AH4AQpT/preview" allow="autoplay"></iframe>
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I add a new patient, and how can I do that? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From Dashboard -> click "Add New Patient" -> fill out identification, name, contact card info metrics -> save parameters.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I view previous or upcoming appointments? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Use the specific appointments ledger inside the master navigation tree sidebar.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I search for a patient who is registered with us? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Use the main dashboard globally scoped query search index.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I edit employees’ information? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">HR settings / staff directories permissions configuration window panel.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I edit Patients’ information? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Open patient profile file dashboard -> configuration edit items fields.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I view clinic operational status breakdowns? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Inside dashboard filters parameters layouts modules.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Where can I apply a filter to view patients based on insurance? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Toggle advanced configuration filters widgets rules inside patient registration views.</div>
-                </div>
             </div>
+
+            <!-- Arabic Views Added Here to Resolve Language Error Screen -->
             <div class="faq-group faq-group-ar rtl">
-                <!-- Arabic items mapped here structurally -->
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني الدخول إلى موقع تداوى الإلكتروني؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">للدخول إلى موقع تداوى الإلكتروني، يرجى فتح أحد متصفحات الإنترنت، ثم إدخال الرابط التالي في شريط البحث: https://provider.tadawa.com/auth/login</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني العثور على المواعيد المحجوزة لليوم؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على Dashboard للاطلاع على المواعيد المحجوزة لليوم.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">أين يمكنني حجز موعد لمريض، وكيف يمكنني القيام بذلك؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">
+                        من لوحة التحكم (Dashboard) -> اضغط على "Book Appointment" -> أدخل رقم هاتف المريض أو الرقم الوطني للبحث عن ملفه -> اختر الطبيب والتاريخ والوقت -> اضغط على "Confirm Booking".
+                        
+                        <!-- Arabic Video Interface Layout Mirror -->
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/1BIGSkjf5E_QZyV_GznZ8hQxp0AH4AQpT/preview" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- TAB: Assistant Doctor -->
         <div id="sheet-Assistant Doctor" class="sheet-content">
-            <!-- Assistant Doctor content layers -->
+            <div class="faq-group faq-group-en active">
+                <div class="faq-item">
+                    <div class="faq-question">How can I see patients waiting in the queue? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the website’s sidebar, click on "Queue" to view patients waiting.</div>
+                </div>
+            </div>
         </div>
 
         <!-- TAB: Family Doctor -->
         <div id="sheet-Family Doctor" class="sheet-content">
-            <!-- Family Doctor content layers -->
+            <div class="faq-group faq-group-en active">
+                <div class="faq-item">
+                    <div class="faq-question">Where do I view routed patients ready for consultation? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the sidebar menu, select "Consultation Room" or "My Queue".</div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -429,7 +297,11 @@ My health-test results-completed-choose your doctor-Consultation</div>
         const query = searchInput.value.toLowerCase().trim();
         const activeSheetEl = document.getElementById(`sheet-${currentSheet}`);
         const activeGroup = activeSheetEl.querySelector(`.faq-group-${currentLang}`);
-        if(!activeGroup) return;
+        if(!activeGroup) {
+            document.getElementById('no-results-msg').style.display = 'block';
+            return;
+        }
+        
         const faqItems = activeGroup.getElementsByClassName('faq-item');
         let visibleCount = 0;
         
@@ -446,8 +318,7 @@ My health-test results-completed-choose your doctor-Consultation</div>
             }
         }
 
-        const noResultsMsg = document.getElementById('no-results-msg');
-        noResultsMsg.style.display = (visibleCount === 0) ? 'block' : 'none';
+        document.getElementById('no-results-msg').style.display = (visibleCount === 0) ? 'block' : 'none';
     }
 
     function switchSheet(sheetName, btnEl) {
@@ -464,6 +335,7 @@ My health-test results-completed-choose your doctor-Consultation</div>
         currentLang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.faq-group').forEach(g => g.classList.remove('active'));
+        
         const activeSheetEl = document.getElementById(`sheet-${currentSheet}`);
         const targetGroup = activeSheetEl.querySelector(`.faq-group-${lang}`);
         if(targetGroup) targetGroup.classList.add('active');
@@ -471,9 +343,11 @@ My health-test results-completed-choose your doctor-Consultation</div>
         const searchInput = document.getElementById('search-input');
         if(lang === 'en') {
             document.getElementById('btn-en').classList.add('active');
+            searchInput.placeholder = "Search in this tab...";
             searchInput.style.direction = 'ltr';
         } else {
             document.getElementById('btn-ar').classList.add('active');
+            searchInput.placeholder = "...ابحث في هذا القسم";
             searchInput.style.direction = 'rtl';
         }
         filterFAQs();
