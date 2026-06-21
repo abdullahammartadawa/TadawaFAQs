@@ -8,7 +8,8 @@
         :root {
             --primary: #2b6cb0;
             --primary-hover: #1a4e8a;
-            --bg: #f7fafc;
+            --bg-start: #eef2f7; /* Refined polished background color palette gradient */
+            --bg-end: #e2e8f0;
             --text: #2d3748;
             --white: #ffffff;
             --border: #e2e8f0;
@@ -16,11 +17,12 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
             color: var(--text);
             margin: 0;
             padding: 40px 20px;
             line-height: 1.6;
+            min-height: 100vh;
         }
         .container {
             max-width: 1000px;
@@ -28,8 +30,21 @@
             background: var(--white);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
+        
+        /* Brand Identity Logo Component Style Rules */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .brand-logo {
+            max-width: 220px;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+
         h1 {
             text-align: center;
             color: var(--primary);
@@ -176,6 +191,12 @@
 <body>
 
 <div class="container">
+    
+    <!-- Brand Identity Logo Box Layer Components -->
+    <div class="brand-header">
+        <img src="logo.png" alt="Tadawa Logo" class="brand-logo">
+    </div>
+
     <h1>Tadawa Portal FAQs / قاعدة بيانات تداوى</h1>
     
     <div class="sheet-tabs">
@@ -341,7 +362,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين أجد تقاريري الطبية ووصفاتي الطبية بعد الاستشارة؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">تداوى - المكتملة - (اختر طبيبك)-التشخيص<br><br>أو اكتملت نتائج فحوصاتي الصحية - اختر طبيبك</div>
+                    <div class="faq-answer">تداوى - المكتملة - (اختر طبيبك)-التشخيص<br><br>أو اكتملت نتائج فحاصاتي الصحية - اختر طبيبك</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">اين اجد الادوية الخاصة بي؟ <span class="chevron">▼</span></div>
@@ -388,7 +409,6 @@
                 <div class="faq-item">
                     <div class="faq-question">Where can I add a new patient, and how can I do that? <span class="chevron">▼</span></div>
                     <div class="faq-answer">From Dashboard-&gt; Add new patient-&gt; Enter mobile number-&gt; check if the number is already exist-&gt; if not fill all the required data and make sure that the national id or passport number are identical with identity card-&gt; save
-                        <!-- ADD A PATIENT VIDEO EMBED -->
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1P5lLoVsNaMn8IPMAjkAxcZXL4MF2Mrex/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -404,7 +424,6 @@
                 <div class="faq-item">
                     <div class="faq-question">Where can I edit employees’ information? <span class="chevron">▼</span></div>
                     <div class="faq-answer">Settings⚙️-&gt; Manage Employees-&gt; choose the employee and edit information-&gt; save
-                        <!-- EDIT WORKING HOURS VIDEO EMBED -->
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1qnr8wGK2zLLI6u4Zm2zYM_LocK4VPu-j/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -412,7 +431,6 @@
                 <div class="faq-item">
                     <div class="faq-question">Where can I book an appointment for a patient, and how can I do that? <span class="chevron">▼</span></div>
                     <div class="faq-answer">From Dashboard-&gt; click &quot;Book Appointment&quot;-&gt; fill in the patient's phone number or national ID to search for their file-&gt; select the doctor, date, and time-&gt; click &quot;Confirm Booking&quot;.
-                        <!-- BOOK AN APPOINTMENT VIDEO EMBED -->
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1BIGSkjf5E_QZyV_GznZ8hQxp0AH4AQpT/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -442,7 +460,6 @@
                 <div class="faq-item">
                     <div class="faq-question">أين وكيف يمكنني إضافة مريض جديد؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">من لوحة التحكم (Dashboard) -&gt; إضافة مريض جديد -&gt; أدخل رقم الهاتف المحمول -&gt; تحقق مما إذا كان الرقم موجودًا بالفعل -&gt; إذا لم يكن موجودًا، املأ جميع البيانات المطلوبة وتأكد من تطابق الرقم الوطني أو رقم جواز السفر مع بطاقة الهوية -&gt; حفظ
-                        <!-- ADD A PATIENT ARABIC EMBED -->
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1P5lLoVsNaMn8IPMAjkAxcZXL4MF2Mrex/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -458,7 +475,6 @@
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني تعديل معلومات الموظفين؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">الإعدادات⚙️ -&gt; إدارة الموظفين (Manage Employees) -&gt; اختر الموظف وعدل معلوماته -&gt; حفظ
-                        <!-- EDIT WORKING HOURS ARABIC EMBED -->
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1qnr8wGK2zLLI6u4Zm2zYM_LocK4VPu-j/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -679,6 +695,7 @@
         document.getElementById('no-results-msg').style.display = (visibleCount === 0) ? 'block' : 'none';
     }
 
+    // Sheet toggle script functions
     function switchSheet(sheetName, btnEl) {
         currentSheet = sheetName;
         document.querySelectorAll('.sheet-btn').forEach(b => b.classList.remove('active'));
@@ -689,6 +706,7 @@
         switchLang(currentLang);
     }
 
+    // Language localization matrix controllers
     function switchLang(lang) {
         currentLang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
