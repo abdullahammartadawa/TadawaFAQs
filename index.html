@@ -25,43 +25,41 @@
             min-height: 100vh;
         }
         
-/* Left Side Transparent Watermark Logo */
-body::before {
-    content: "";
-    position: fixed;
-    top: 50%;
-    left: 8%; /* Centers it inside the left side margin */
-    transform: translateY(-50%);
-    width: 45vw;
-    max-width: 150px;
-    height: 300px;
-    background-image: url('logo.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.1; /* Subtle blend visibility on the side */
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Right Side Mirror Transparent Watermark Logo */
-body::after {
-    content: "";
-    position: fixed;
-    top: 50%;
-    right: 8%; /* Centers it inside the right side margin */
-    transform: translateY(-50%);
-    width: 45vw;
-    max-width: 150px;
-    height: 300px;
-    background-image: url('logo.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.1;
-    z-index: -1;
-    pointer-events: none;
-}
+        /* Fixed Transparent Background Watermark Logo Layer */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 8%;
+            transform: translateY(-50%);
+            width: 15vw;
+            max-width: 150px;
+            height: 300px;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            top: 50%;
+            right: 8%;
+            transform: translateY(-50%);
+            width: 15vw;
+            max-width: 150px;
+            height: 300px;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
 
         .container {
             max-width: 1000px;
@@ -257,6 +255,7 @@ body::after {
 
         <div id="no-results-msg" class="no-results">No matches found. / لم يتم العثور على نتائج.</div>
 
+        <!-- TAB: Tadawa App FAQ -->
         <div id="sheet-Tadawa App FAQ" class="sheet-content active">
             <div class="faq-group faq-group-en active">
                 <div class="faq-item">
@@ -350,7 +349,7 @@ body::after {
                     <div class="faq-answer">تعمل شركة تداوى كمزود رعاية صحية هجين في الأردن، مستخدمةً نموذجًا متكاملًا يجمع بين منصة رقمية متطورة للرعاية الصحية عن بُعد ومراكز طبية فعلية قوية. ولا تقتصر وظيفة الشركة على كونها موردًا للبرمجيات فحسب، بل هي أيضًا جهة تنسيق شاملة للرعاية الصحية، تركز استراتيجيًا على تقديم نموذج الرعاية الصحية الأولية لضمان إدارة طبية مستمرة تتمحور حول المريض في جميع الفئات العمرية والاجتماعية.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">كيف أنشئ حسابًا على تداوى? <span class="chevron">▼</span></div>
+                    <div class="faq-question">كيف أنشئ حسابًا على تداوى؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">١. تحميل التطبيق: حمّل تطبيق تاداوا من متجر التطبيقات على جهازك وافتحه.<br>٢. بدء التسجيل: اضغط على &quot;إنشاء حساب&quot;.<br>٣. أدخل بيانات التعريف: أدخل رقم هاتفك ورقم هويتك الوطنية أو جواز سفرك<br>٤. أنشئ كلمة مرور: يجب أن تستوفي متطلبات الأمان. اختر كلمة مرور قوية.<br>٥. أضف معلوماتك الشخصية: أدخل تاريخ ميلادك، وبريدك الإلكتروني، وجنسك.<br>٦. فعّل حسابك عبر واتساب: ستتلقى رمز التحقق لمرة واحدة (OTP) عبر واتساب. أدخل هذا الرمز في التطبيق لتفعيل حسابك.<div class="note-box"><strong>ملاحظة:</strong> يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وأن تتضمن حرفًا كبيرًا واحدًا على الأقل، ورقمًا واحدًا على الأقل، ورمزًا خاصًا واحدًا على الأقل.</div></div>
                 </div>
                 <div class="faq-item">
@@ -387,7 +386,7 @@ body::after {
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">ما الفرق بين الاستشارة عن بعد, وعلاجي الآن, والمكالمة العاجلة؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">&quot;استشارة عن بُعد&quot; صُممت لتلبية الاحتياجات الطبية غير العاجلة، والفحوصات الروتينية، والمتابعات. وتتيح هذه الخدمة للمرضى حجز المواعيد مسبقًا، واختيار التاريخ والوقت والطبيب الذي يرغبون في مقابلته.<br><br>&quot;عالجني الان&quot; عبارة عن وحدة رعاية عاجلة مبتكرة توفر استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، وتعمل كبديل رقمي منخفض التكلفة لزيارات غرف الطوارئ المكلفة.<br><br>&quot;مكالمة عاجلة&quot; عبارة عن وحدة رعاية عاجلة مبتكرة تتيح لك اختيار الطبيب المحدد الذي تريده لإجراء استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، مما يوفر بديلاً رقميًا منخفض التكلفة لزيارات غرف الطوارئ المكلفة Diesel.</div>
+                    <div class="faq-answer">&quot;استشارة عن بُعد&quot; صُممت لتلبية الاحتياجات الطبية غير العاجلة، والفحوصات الروتينية، والمتابعات. وتتيح هذه الخدمة للمرضى حجز المواعيد مسبقًا، واختيار التاريخ والوقت والطبيب الذي يرغبون في مقابلته.<br><br>&quot;عالجني الان&quot; عبارة عن وحدة رعاية عاجلة مبتكرة توفر استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، وتعمل كبديل رقمي منخفض التكلفة لزيارات غرف الطوارئ المكلفة.<br><br>&quot;مكالمة عاجلة&quot; عبارة عن وحدة رعاية عاجلة مبتكرة تتيح لك اختيار الطبيب المحدد الذي تريده لإجراء استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، مما يوفر بديلاً رقميًا منخفض التكلفة لزيارات غرف الطوارئ المكلفة.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">هل يمكنني إلغاء موعدي أو إعادة جدولته؟ هل هناك رسوم؟ <span class="chevron">▼</span></div>
@@ -432,6 +431,7 @@ body::after {
             </div>
         </div>
 
+        <!-- TAB: Secretary -->
         <div id="sheet-Secretary" class="sheet-content">
             <div class="faq-group faq-group-en">
                 <div class="faq-item">
@@ -537,6 +537,7 @@ body::after {
             </div>
         </div>
 
+        <!-- TAB: Assistant Doctor -->
         <div id="sheet-Assistant Doctor" class="sheet-content">
             <div class="faq-group faq-group-en">
                 <div class="faq-item">
@@ -608,6 +609,7 @@ body::after {
             </div>
         </div>
 
+        <!-- TAB: Family Doctor (RESTORATION POINT FIXED) -->
         <div id="sheet-Family Doctor" class="sheet-content">
             <div class="faq-group faq-group-en">
                 <div class="faq-item">
@@ -619,32 +621,32 @@ body::after {
                     <div class="faq-answer">From the website’s sidebar, click on Dashboard to view today’s booked appointments.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Where can I view the queue of waiting patients? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; choose your clinic room-&gt; view queue</div>
+                    <div class="faq-question">How can I start a consultation? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the Dashboard, locate the patient’s name, click on the three dots (…) next to it, and select Start Consultation.<br><br>Once you have completed all the required information, click Save Consultation to save the consultation.<div class="note-box"><strong>Note:</strong> A page divided into two sections will open:<br>• The right section contains the appointment details, including the date and time of the appointment, the patient’s information, and whether there is a Current Care Plan or any previous diagnoses.<br>• The left section includes the fields used to document the consultation, such as: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Where can I see previous medical notes or lab results? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; click on open file-&gt; on top right click on full medical records icon 📁 or test result icon 🔬</div>
+                    <div class="faq-question">Where can I add a new patient, and how can I do that? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the website’s sidebar, select Patient, then click Add New Patient.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Where do I write my dynamic clinical diagnosis assessment notes? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; click on open file-&gt; fill all assessment or SOAP fields-&gt; save</div>
+                    <div class="faq-question">Where can I view previous or upcoming appointments? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the sidebar, select Appointments, then go to Filters. Choose the desired date range by selecting both the start date and end date, then click Apply to view the appointments.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Where can I input and authorize an electronic prescription (e-Rx)? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; click on open file-&gt; click on e-Rx tab-&gt; choose medication and duration and dose-&gt; click prescribe-&gt; sign card pin code-&gt; print or share</div>
+                    <div class="faq-question">Where can I search for a patient who is registered with us? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the sidebar, click on Patients, then use the Search field to look for the patient.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How can I order lab tests or diagnostic imaging scans? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; click on open file-&gt; click on diagnostic tab-&gt; choose lab panel or radiology item-&gt; click add-&gt; submit order</div>
+                    <div class="faq-question">Where can I view the diagnoses, chronic diseases, vaccinations, allergies, medications, and vital readings of a specific patient? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Select Patients, then search for the required patient and open their profile. You will find several sections, including:<br><br>• Chronic Disease<br>• Allergies<br>• Vaccines<br>• Active Medication<br>• Vitals and Trends<br><br>You can also click View All to view all the details.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do I assign specific ICD-10 diagnostic codes? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; click on open file-&gt; look for ICD-10 autocomplete input search field-&gt; type matching symptoms or numeric rules-&gt; choose condition-&gt; link item</div>
+                    <div class="faq-question">Where can I view patients who "visited the clinic", patients who used the “Treat Me Now” call service, patients who requested a "Home Visit", or patients who used the "Urgent Call" service? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the Appointments section, select Filters, then choose the required visit type from the Mode option to view patients accordingly.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How do I finalize and close the medical consultation session? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From side bar-&gt; Queue list-&gt; click on open file-&gt; review entries criteria-&gt; click main action checkout item option layout: Finish Visit / Complete Encounter</div>
+                    <div class="faq-question">Where can I apply a filter to view patients based on their insurance status or within a specific age group? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">From the sidebar, select Patient then go to Filter. Choose Yes, No, or All from the Insurance option as needed. After that, specify the desired age group using the Range of Age option.</div>
                 </div>
             </div>
             <div class="faq-group faq-group-ar rtl">
@@ -654,35 +656,35 @@ body::after {
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني العثور على المواعيد المحجوزة لليوم؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على Dashboard للاطلاع على المواعيد المحجوزة لليوم.<br></div>
+                    <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على Dashboard للاطلاع على المواعيد المحجوزة لليوم.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">أين يمكنني عرض قائمة انتظار المرضى؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اختر غرفة عيادتك -&gt; عرض قائمة الانتظار</div>
+                    <div class="faq-question">كيف يمكنني البدء بالاستشارة؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من خلال Dashboard، ابحث عن اسم المريض ثم اضغط على النقاط الثلاث (…) الموجودة بجانب اسمه، واختر Start Consultation.<br><br>بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على Save Consultation لحفظ الاستشارة.<div class="note-box"><strong>ملاحظة:</strong> ستفتح صفحة مقسومة إلى قسمين:<br>• القسم الأيمن: يحتوي على معلومات الحجز، مثل تاريخ ووقت الموعد، بالإضافة إلى معلومات المريض، وما إذا كان هناك Current Care Plan أو أي تشخيصات سابقة (Previous Diagnoses).<br>• القسم الأيسر: يحتوي على خانات لإدخال معلومات الاستشارة، وتشمل: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">أين يمكنني رؤية الملاحظات الطبية السابقة أو نتائج الفحوصات المخبرية؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اضغط على فتح الملف (open file) -&gt; في أعلى اليمين اضغط على أيقونة السجلات الطبية الكاملة 📁 أو أيقونة نتائج الفحوصات 🔬</div>
+                    <div class="faq-question">أين يمكنني إضافة مريض جديد؟ وكيف يمكنني القيام بذلك؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي للموقع، اختر Patient، ثم اضغط على Add New Patient.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">أين أكتب ملاحظات التقييم والتشخيص السريري؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اضغط على فتح الملف (open file) -&gt; املأ جميع حقول التقييم أو ملاحظات SOAP -&gt; حفظ</div>
+                    <div class="faq-question">أين يمكنني الاطلاع على المواعيد السابقة أو القادمة؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي، اختر Appointments (المواعيد)، ثم انتقل إلى Filters. بعد ذلك، حدد الفترة الزمنية المطلوبة من خلال اختيار تاريخ البداية وتاريخ النهاية، ثم اضغط على Apply لعرض المواعيد.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">أين يمكنني إدخال واعتماد وصفة طبية إلكترونية (e-Rx)؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اضغط على فتح الملف (open file) -&gt; اضغط على تبويب الوصفات الإلكترونية (e-Rx) -&gt; اختر الدواء والمدة والجرعة -&gt; اضغط على صرف وصفة (prescribe) -&gt; أدخل رمز PIN الخاص ببطاقتك للتوقيع -&gt; طباعة أو مشاركة</div>
+                    <div class="faq-question">أين يمكنني البحث عن مريض يتابع معنا؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي، اضغط على Patients، ثم استخدم خانة Search للبحث عن المريض.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">كيف يمكنني طلب الفحوصات المخبرية أو صور الأشعة التشخيصية؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اضغط على فتح الملف (open file) -&gt; اضغط على تبويب التشخيص (diagnostic) -&gt; اختر الفحص المخبري أو الأشعة المطلوبة -&gt; اضغط على إضافة (add) -&gt; إرسال الطلب (submit order)</div>
+                    <div class="faq-question">أين يمكنني الاطلاع على التشخيصات، والأمراض المزمنة، والمطاعيم، والحساسية، والأدوية، والقراءات الحيوية الخاصة بمريض معين <span class="chevron">▼</span></div>
+                    <div class="faq-answer">اختر Patients، ثم ابحث عن المريض المطلوب وافتح صفحته. ستظهر لك عدة خانات، منها:<br><br>• الأمراض المزمنة<br>• الحساسية<br>• المطاعيم<br>• الأدوية الحالية<br>• القراءات الحيوية<br><br>كما يمكنك الضغط على View All للاطلاع على جميع التفاصيل.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">كيف يمكنني تعيين رموز تشخيصية محددة (ICD-10)؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اضغط على فتح الملف (open file) -&gt; ابحث عن حقل إدخال البحث التلقائي لرموز ICD-10 -&gt; اكتب الأعراض أو الأرقام المطابقة -&gt; اختر الحالة -&gt; ربط التشخيص</div>
+                    <div class="faq-question">أين يمكنني الاطلاع على المرضى الذين حضروا إلى العيادة، أو الذين أجروا مكالمة عبر خدمة “عالجني الآن”، أو الذين طلبوا خدمة الزيارة المنزلية ، أو خدمة الاتصال العاجل؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من قائمة Appointments، اختر Filters، ثم من خيار Mode حدد نوع الزيارة المطلوب لعرض المرضى وفقًا له.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">كيف أقوم بإنهاء وإغلاق جلسة الاستشارة الطبية بالكامل؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من الشريط الجانبي -&gt; قائمة الانتظار (Queue list) -&gt; اضغط على فتح الملف (open file) -&gt; راجع جميع البيانات المدخلة -&gt; اضغط على خيار الإجراء الرئيسي لإنهاء الزيارة: Finish Visit / Complete Encounter</div>
+                    <div class="faq-question">أين يمكنني تطبيق فلتر لعرض المرضى حسب حالة التأمين أو ضمن فئة عمرية محددة؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">من الشريط الجانبي، اختر Filter، ثم من خيار Insurance اختر Yes أو No أو All حسب الحاجة. بعد ذلك، قم بتحديد الفئة العمرية المطلوبة من خلال خيار Range of Age.</div>
                 </div>
             </div>
         </div>
