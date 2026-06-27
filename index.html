@@ -223,6 +223,99 @@
         .rtl { direction: rtl; }
         .rtl .faq-answer { padding-right: 0; padding-left: 20px; }
         .rtl .note-box { border-left: none; border-right: 4px solid var(--primary); }
+
+        /* ===== Mobile responsiveness ===== */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px 10px;
+            }
+            body::before, body::after {
+                display: none; /* watermark logos just add visual noise on small screens */
+            }
+            .container {
+                padding: 20px 16px;
+                border-radius: 10px;
+            }
+            .brand-logo {
+                max-width: 150px;
+            }
+            h1 {
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+                line-height: 1.4;
+            }
+            .sheet-tabs {
+                padding: 4px 4px 0 4px;
+                gap: 3px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+            }
+            .sheet-btn {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .content-box {
+                padding: 16px 14px;
+            }
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+            .search-container {
+                min-width: 0;
+                width: 100%;
+            }
+            .search-bar {
+                padding: 11px 14px;
+                font-size: 0.9rem;
+            }
+            .lang-switch {
+                width: 100%;
+            }
+            .lang-btn {
+                flex: 1;
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            .faq-item {
+                padding: 13px 0;
+            }
+            .faq-question {
+                font-size: 0.95rem;
+                gap: 10px;
+                line-height: 1.4;
+            }
+            .faq-answer {
+                font-size: 0.9rem;
+                padding-right: 0;
+                padding-top: 8px;
+            }
+            .rtl .faq-answer {
+                padding-left: 0;
+            }
+            .note-box {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            .chevron {
+                flex-shrink: 0;
+            }
+        }
+
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 1.15rem;
+            }
+            .sheet-btn {
+                padding: 9px 11px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -342,6 +435,10 @@
                     <div class="faq-question">Where can I find my Vitals and trends? <span class="chevron">▼</span></div>
                     <div class="faq-answer">My Health, select Vital and Trends to update and monitor measurements including height, weight, body temperature, heart rate, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels.<div class="note-box"><strong>Note:</strong> Track and update your vital signs regularly , including height, weight, heart rate, body temperature, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels, to monitor changes and maintain an up-to-date health record.</div></div>
                 </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can a patient contact their Family Doctor after completing the required tests? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">The test results are sent to the clinic’s WhatsApp number. An appointment (Office Visit or Treat Me Now) is then scheduled for the patient, and the patient is informed of the results. If needed, appropriate medications are prescribed or the necessary medical action is taken based on the results.</div>
+                </div>
             </div>
             <div class="faq-group faq-group-ar rtl">
                 <div class="faq-item">
@@ -428,6 +525,10 @@
                     <div class="faq-question">اين اجد القراءات الحيوية الخاصة بي؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">في قسم &quot;صحتي&quot;، اختر &quot;البيانات الحيوية والاتجاهات&quot; لتحديث ومراقبة القياسات بما في ذلك الطول والوزن ودرجة حرارة الجسم ومعدل ضربات القلب وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم.<div class="note-box"><strong>ملاحظة:</strong> قم بتتبع وتحديث علاماتك الحيوية بانتظام , بما في ذلك الطول والوزن ومعدل ضربات القلب ودرجة حرارة الجسم وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم، لمراقبة التغييرات والحفاظ على سجل صحي محدث.</div></div>
                 </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكن للمريض التواصل مع طبيب الأسرة بعد إتمام الفحوصات المطلوبة؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">يتم إرسال نتائج التحاليل إلى رقم واتساب العيادة. بعد ذلك، يتم حجز موعد للمريض (Office Visit أو Treat Me Now) وإبلاغه بنتائج التحاليل. عند الحاجة، يتم وصف الأدوية المناسبة أو اتخاذ الإجراء الطبي المناسب بناءً على النتائج.</div>
+                </div>
             </div>
         </div>
 
@@ -444,7 +545,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I add a new patient, and how can I do that? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From Dashboard-&gt; Add new patient-&gt; Enter mobile number-&gt; check if the number is already exist-&gt; if not fill all the required data and make sure that the national id or passport number are identical with identity card-&gt; save
+                    <div class="faq-answer">From Dashboard-&gt; Add new patient-&gt; Enter mobile number-&gt; check if the number is already exist-&gt; if not fill all the required data and make sure that the national id or passport number are identical with identity card-&gt; save<div class="note-box"><strong>Note:</strong> If the account is a primary account, select Primary as the account type. If the account is a sub account, select Sub Account as the account type. Then enter the required information, including the name, date of birth, gender, and national ID number. If the patient has health insurance, enter the insurance details; if not, disable the insurance option. The phone number should only be entered for the Primary account.</div>
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1P5lLoVsNaMn8IPMAjkAxcZXL4MF2Mrex/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -459,14 +560,14 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I edit employees’ information? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">Settings⚙️-&gt; Manage Employees-&gt; choose the employee and edit information-&gt; save
+                    <div class="faq-answer">From the Staff section, select the required employee and open their profile. Then click Edit, make the necessary changes, and click Save to save the updates.
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1qnr8wGK2zLLI6u4Zm2zYM_LocK4VPu-j/preview" allow="autoplay"></iframe>
                         </div></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I book an appointment for a patient, and how can I do that? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From Dashboard-&gt; click &quot;Book Appointment&quot;-&gt; fill in the patient's phone number or national ID to search for their file-&gt; select the doctor, date, and time-&gt; click &quot;Confirm Booking&quot;.
+                    <div class="faq-answer">From Dashboard-&gt; click &quot;Book Appointment&quot;-&gt; fill in the patient's phone number or national ID to search for their file-&gt; select the doctor, date, and time-&gt; click &quot;Confirm Booking&quot;.<div class="note-box"><strong>Note:</strong> If the patient already exists, click Next Step, then select the doctor's name, appointment date, and appointment time. If the patient does not exist, you can choose Add New Patient if you have all of the patient's information available, or Create with a Ghost Account if you do not have all of the patient's information, then book the appointment after entering the required information.</div>
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1BIGSkjf5E_QZyV_GznZ8hQxp0AH4AQpT/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -474,6 +575,10 @@
                 <div class="faq-item">
                     <div class="faq-question">Where can I edit Patients’ information? <span class="chevron">▼</span></div>
                     <div class="faq-answer">From Dashboard-&gt; click on any booked appointment-&gt; a sidebar will open containing the patient’s file and information-&gt; edit icon 📝 on top-&gt; edit information-&gt; save</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I edit a patient's information if they do not appear in the Patients section? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">If the patient is already registered but does not appear under Patients, go to the Appointments section and search using the patient’s name, phone number, or national ID number (the system may ask you to enter the patient’s phone number to complete the search). Once you find the patient, book an appointment. Then, from the Dashboard, open the patient’s profile, click View All, then Edit, make the required changes, and save them. After updating the information, cancel the appointment.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I view patients who &quot;visited the clinic&quot;, patients who used the “Treat Me Now” call service, patients who requested a &quot;Home Visit&quot;, or patients who used the &quot;Urgent Call&quot; service? <span class="chevron">▼</span></div>
@@ -495,7 +600,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين وكيف يمكنني إضافة مريض جديد؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من لوحة التحكم (Dashboard) -&gt; إضافة مريض جديد -&gt; أدخل رقم الهاتف المحمول -&gt; تحقق مما إذا كان الرقم موجودًا بالفعل -&gt; إذا لم يكن موجودًا، املأ جميع البيانات المطلوبة وتأكد من تطابق الرقم الوطني أو رقم جواز السفر مع بطاقة الهوية -&gt; حفظ
+                    <div class="faq-answer">من لوحة التحكم (Dashboard) -&gt; إضافة مريض جديد -&gt; أدخل رقم الهاتف المحمول -&gt; تحقق مما إذا كان الرقم موجودًا بالفعل -&gt; إذا لم يكن موجودًا، املأ جميع البيانات المطلوبة وتأكد من تطابق الرقم الوطني أو رقم جواز السفر مع بطاقة الهوية -&gt; حفظ<div class="note-box"><strong>ملاحظة:</strong> إذا كان الحساب رئيسيًا، اختر نوع الحساب Primary. إذا كان الحساب فرعيًا، اختر نوع الحساب Sub Account. بعد ذلك، أدخل البيانات المطلوبة، وهي: الاسم، تاريخ الميلاد، الجنس، والرقم الوطني. في حال وجود تأمين صحي، قم بإدخال بيانات التأمين، أما إذا لم يكن لدى المريض تأمين صحي، فقم بإغلاق خيار التأمين. يتم إدخال رقم الهاتف للحساب الرئيسي (Primary) فقط.</div>
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1P5lLoVsNaMn8IPMAjkAxcZXL4MF2Mrex/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -510,14 +615,14 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني تعديل معلومات الموظفين؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">الإعدادات⚙️ -&gt; إدارة الموظفين (Manage Employees) -&gt; اختر الموظف وعدل معلوماته -&gt; حفظ
+                    <div class="faq-answer">من قائمة Staff، اختر الموظف المطلوب وافتح صفحته، ثم اضغط على Edit، وقم بإجراء التعديلات المطلوبة، ثم اضغط على Save لحفظ التغييرات.
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1qnr8wGK2zLLI6u4Zm2zYM_LocK4VPu-j/preview" allow="autoplay"></iframe>
                         </div></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين وكيف يمكنني حجز موعد لمريض؟ <span class="chevron">▼</span></div>
-                    <div class="faq-answer">من لوحة التحكم (Dashboard) -&gt; اضغط على &quot;حجز موعد&quot; (Book Appointment) -&gt; أدخل رقم هاتف المريض أو الرقم الوطني للبحث عن ملفه -&gt; اختر الطبيب والتاريخ والوقت -&gt; اضغط على &quot;تأكيد الحجز&quot; (Confirm Booking).
+                    <div class="faq-answer">من لوحة التحكم (Dashboard) -&gt; اضغط على &quot;حجز موعد&quot; (Book Appointment) -&gt; أدخل رقم هاتف المريض أو الرقم الوطني للبحث عن ملفه -&gt; اختر الطبيب والتاريخ والوقت -&gt; اضغط على &quot;تأكيد الحجز&quot; (Confirm Booking).<div class="note-box"><strong>ملاحظة:</strong> إذا كان المريض موجودًا، اضغط على Next Step، ثم قم باختيار اسم الطبيب، وتاريخ الموعد، ووقت الحجز. إذا لم يكن المريض موجودًا، يمكنك اختيار Add New Patient إذا كانت جميع معلومات المريض متوفرة لديك، أو Create with a Ghost Account إذا لم تكن جميع معلومات المريض متوفرة لديك، ثم قم بحجز الموعد بعد إدخال المعلومات المطلوبة.</div>
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/1BIGSkjf5E_QZyV_GznZ8hQxp0AH4AQpT/preview" allow="autoplay"></iframe>
                         </div></div>
@@ -525,6 +630,10 @@
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني تعديل معلومات المرضى؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">من لوحة التحكم (Dashboard) -&gt; اضغط على أي موعد محجوز -&gt; سيفتح شريط جانبي يحتوي على ملف المريض ومعلوماته -&gt; أيقونة التعديل 📝 في الأعلى -&gt; تعديل المعلومات -&gt; حفظ</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تعديل بيانات مريض لا يظهر في قسم المرضى؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">إذا كان المريض مسجلاً مسبقًا ولكنه لا يظهر في قسم Patients، يرجى الذهاب إلى قسم Appointments والبحث عنه باستخدام الاسم، أو رقم الهاتف، أو الرقم الوطني (قد يطلب منك النظام إدخال رقم هاتف المريض لإكمال عملية البحث). بعد العثور عليه، قم بحجز موعد له. ثم من Dashboard افتح صفحة المريض، واضغط على View All ثم Edit، وقم بإجراء التعديلات المطلوبة وحفظها. بعد الانتهاء من تعديل البيانات، قم بإلغاء الموعد.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني عرض المرضى الذين &quot;زاروا العيادة&quot;، أو المرضى الذين استخدموا خدمة مكالمات &quot;عالجني الآن&quot;، أو المرضى الذين طلبوا &quot;زيارة منزلية&quot;، أو المرضى الذين استخدموا خدمة &quot;المكالمة العاجلة&quot;؟ <span class="chevron">▼</span></div>
@@ -549,8 +658,36 @@
                     <div class="faq-answer">From the website’s sidebar, click on Dashboard to view today’s booked appointments.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How can I start a consultation? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From the Dashboard, locate the patient’s name, click on the three dots (…) next to it, and select Start Consultation.<br><br>Once you have completed all the required information, click Save Consultation to save the consultation.<div class="note-box"><strong>Note:</strong> A page divided into two sections will open:<br>• The right section contains the appointment details, including the date and time of the appointment, the patient’s information, and whether there is a Current Care Plan or any previous diagnoses.<br>• The left section includes the fields used to document the consultation, such as: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
+                    <div class="faq-question">How can I start office consultation?<br>&amp;<br>What sections are available when starting a consultation? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">When the secretary takes an appointment for a patient, it will show on your Dashboard, locate the patient’s name, click on the three dots (…) next to it, and select Start Consultation.<br><br>Once you have completed all the required information, click Save Consultation to save the consultation.<div class="note-box"><strong>Note:</strong> A page divided into two sections will open:<br>• The right section contains the appointment details, including the date and time of the appointment, the patient’s information, and whether there is a Current Care Plan or any previous diagnoses.<br>• The left section includes the fields used to document the consultation, such as: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I complete the Reason for the Visit section and what does it contain? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">After starting the consultation, open the Reason for the Visit section. You will find:<br><br>• Symptoms Description: To document the patient’s symptoms.<br>• Patient Notes.<div class="note-box"><strong>Note:</strong> What is the reason for the patient's visit and what symptoms or complaints did he come with?</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I complete the Check-up section and what does it contain? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the Check-up section, where you will find:<br><br>• Review of Systems: To document the review of body systems.<br>• Vitals and Trends: To view and record vital signs such as Height, Weight, Blood Pressure, and other vital measurements.<div class="note-box"><strong>Note:</strong> You can also click Add New Vital to add a new vital sign record.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does the Past, Family and Social History (PFSH) section include? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the (PFSH) section. You will find:<br><br>• Past Medical History: Add medical history and indicate whether a condition is chronic or not.<br>• Past Surgical History: Add previous surgeries.<br>• Medication History: Add current or previous medications.<br>• Vaccines: Add vaccination records.<br>• Allergies: Add allergy information.<br>• Family History: Add family members and document their medical conditions.<br>• Social History: Add the patient’s social history information.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does the Consultation section include? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the Consultation section, where you can enter:<br><br>• Consultation: Consultation details.<br>• Public Note<br>• Private Note<br>• Diagnosis<br>• Procedures Performed: Procedures performed during the visit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between Public Note and Private Note? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">• Public Note: Visible to all doctors involved in the patient’s care and can also be viewed by the patient.<br>• Private Note: Visible only to the doctor who entered it and cannot be viewed by other doctors or the patient.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does the Prescription section include? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the Prescription section, where you can:<br><br>• Treatments: Add treatment plans.<br>• Hospital Procedures: Add hospital procedures.<br>• Medications: Add medications.<br>• Referrals: Add referrals.<br>• Laboratory Tests: Add laboratory tests.<br>• Radiology Tests: Add radiology tests.<br>• Files: Upload files or supporting documents.<div class="note-box"><strong>Note:</strong> Once all required information has been completed, click Save Consultation to save the consultation.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I save the consultation after completing the required information? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">After completing all the required information, click the Save Consultation button located at the bottom of the page to save the consultation.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I view previous or upcoming appointments? <span class="chevron">▼</span></div>
@@ -583,8 +720,36 @@
                     <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على Dashboard للاطلاع على المواعيد المحجوزة لليوم.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">كيف يمكنني البدء بالاستشارة؟ <span class="chevron">▼</span></div>
+                    <div class="faq-question">كيف يمكنني البدء بالاستشارة المكتبية؟<br>&amp;<br>ما هي الاقسام المتاحة عند بدء الاستشارة؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">من خلال Dashboard، ابحث عن اسم المريض ثم اضغط على النقاط الثلاث (…) الموجودة بجانب اسمه، واختر Start Consultation.<br><br>بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على Save Consultation لحفظ الاستشارة.<div class="note-box"><strong>ملاحظة:</strong> ستفتح صفحة مقسومة إلى قسمين:<br>• القسم الأيمن: يحتوي على معلومات الحجز، مثل تاريخ ووقت الموعد، بالإضافة إلى معلومات المريض، وما إذا كان هناك Current Care Plan أو أي تشخيصات سابقة (Previous Diagnoses).<br>• القسم الأيسر: يحتوي على خانات لإدخال معلومات الاستشارة، وتشمل: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تعبئة قسم Reason for the Visit وماذا يحتوي؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">بعد بدء الاستشارة، افتح قسم Reason for the Visit. ستجد خيارين:<br><br>• Symptoms Description: لكتابة وصف الأعراض التي يعاني منها المريض.<br>• Patient Notes: ملاحظات المريض.<div class="note-box"><strong>ملاحظة:</strong> ما هو سبب زيارة المريض وما هي الاعراض او الشكوى التي جاء بسببها.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تعبئة قسم Check-up وماذا يحتوي؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">فتح قسم Check-up، حيث ستجد:<br><br>• Review of Systems: لتوثيق مراجعة أجهزة الجسم المختلفة.<br>• Vitals and Trends: لعرض وإدخال القراءات الحيوية مثل: الطول، الوزن، ضغط الدم وغيرها من القراءات الحيوية.<div class="note-box"><strong>ملاحظة:</strong> كما يمكنك الضغط على Add New Vital لإضافة قراءة حيوية جديدة.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا يتضمن قسم (PFSH)؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم (PFSH)، وستجد الخيارات التالية:<br><br>• Past Medical History: لإضافة التاريخ المرضي، مع إمكانية تحديد ما إذا كان المرض مزمنًا أم لا.<br>• Past Surgical History: لإضافة العمليات الجراحية السابقة.<br>• Medication History: لإضافة الأدوية التي استخدمها أو يستخدمها المريض.<br>• Vaccines: لإضافة المطاعيم.<br>• Allergies: لإضافة الحساسية.<br>• Family History: لإضافة أفراد العائلة وتوثيق الأمراض أو الحالات الصحية الخاصة بكل فرد.<br>• Social History: لإضافة المعلومات الاجتماعية المتعلقة بالمريض.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا يتضمن قسم Consultation؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم Consultation، حيث يمكنك إدخال المعلومات التالية:<br><br>• Consultation: تفاصيل الاستشارة الطبية.<br>• Public Note<br>• Private Note<br>• Diagnosis<br>• Procedures Performed: الإجراءات التي تم تنفيذها خلال الزيارة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ما الفرق بين Public Note و Private Note؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">• Public Note: تظهر لجميع الأطباء الذين يتابعون المريض، كما يمكن للمريض الاطلاع عليها.<br>• Private Note: تظهر فقط للطبيب الذي قام بإدخالها، ولا يمكن لبقية الأطباء أو المريض الاطلاع عليها.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا يتضمن قسم Prescription؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم Prescription، وستجد الخيارات التالية:<br><br>• Treatments: إضافة الخطة العلاجية.<br>• Hospital Procedures: إضافة الإجراءات الطبية أو إجراءات المستشفى.<br>• Medications: إضافة الأدوية.<br>• Referrals: إضافة التحويلات الطبية.<br>• Laboratory Tests: إضافة الفحوصات المخبرية.<br>• Radiology Tests: إضافة فحوصات الأشعة.<br>• Files: إرفاق الملفات أو المستندات المطلوبة.<div class="note-box"><strong>ملاحظة:</strong> بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على Save Consultation لحفظ الاستشارة.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني حفظ الاستشارة بعد الانتهاء من تعبئة البيانات؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على خيار Save Consultation الموجود أسفل الصفحة لحفظ الاستشارة.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني الاطلاع على المواعيد السابقة أو القادمة؟ <span class="chevron">▼</span></div>
@@ -621,12 +786,40 @@
                     <div class="faq-answer">From the website’s sidebar, click on Dashboard to view today’s booked appointments.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How can I start a consultation? <span class="chevron">▼</span></div>
-                    <div class="faq-answer">From the Dashboard, locate the patient’s name, click on the three dots (…) next to it, and select Start Consultation.<br><br>Once you have completed all the required information, click Save Consultation to save the consultation.<div class="note-box"><strong>Note:</strong> A page divided into two sections will open:<br>• The right section contains the appointment details, including the date and time of the appointment, the patient’s information, and whether there is a Current Care Plan or any previous diagnoses.<br>• The left section includes the fields used to document the consultation, such as: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
+                    <div class="faq-question">How can I start office consultation?<br>&amp;<br>What sections are available when starting a consultation? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">When the secretary takes an appointment for a patient, it will show on your Dashboard, locate the patient’s name, click on the three dots (…) next to it, and select Start Consultation.<br><br>Once you have completed all the required information, click Save Consultation to save the consultation.<div class="note-box"><strong>Note:</strong> A page divided into two sections will open:<br>• The right section contains the appointment details, including the date and time of the appointment, the patient’s information, and whether there is a Current Care Plan or any previous diagnoses.<br>• The left section includes the fields used to document the consultation, such as: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I add a new patient, and how can I do that? <span class="chevron">▼</span></div>
                     <div class="faq-answer">From the website’s sidebar, select Patient, then click Add New Patient.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I complete the Reason for the Visit section and what does it contain? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">After starting the consultation, open the Reason for the Visit section. You will find:<br><br>• Symptoms Description: To document the patient’s symptoms.<br>• Patient Notes.<div class="note-box"><strong>Note:</strong> What is the reason for the patient's visit and what symptoms or complaints did he come with?</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I complete the Check-up section and what does it contain? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the Check-up section, where you will find:<br><br>• Review of Systems: To document the review of body systems.<br>• Vitals and Trends: To view and record vital signs such as Height, Weight, Blood Pressure, and other vital measurements.<div class="note-box"><strong>Note:</strong> You can also click Add New Vital to add a new vital sign record.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does the Past, Family and Social History (PFSH) section include? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the (PFSH) section. You will find:<br><br>• Past Medical History: Add medical history and indicate whether a condition is chronic or not.<br>• Past Surgical History: Add previous surgeries.<br>• Medication History: Add current or previous medications.<br>• Vaccines: Add vaccination records.<br>• Allergies: Add allergy information.<br>• Family History: Add family members and document their medical conditions.<br>• Social History: Add the patient’s social history information.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does the Consultation section include? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the Consultation section, where you can enter:<br><br>• Consultation: Consultation details.<br>• Public Note<br>• Private Note<br>• Diagnosis<br>• Procedures Performed: Procedures performed during the visit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between Public Note and Private Note? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">• Public Note: Visible to all doctors involved in the patient’s care and can also be viewed by the patient.<br>• Private Note: Visible only to the doctor who entered it and cannot be viewed by other doctors or the patient.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does the Prescription section include? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">Open the Prescription section, where you can:<br><br>• Treatments: Add treatment plans.<br>• Hospital Procedures: Add hospital procedures.<br>• Medications: Add medications.<br>• Referrals: Add referrals.<br>• Laboratory Tests: Add laboratory tests.<br>• Radiology Tests: Add radiology tests.<br>• Files: Upload files or supporting documents.<div class="note-box"><strong>Note:</strong> Once all required information has been completed, click Save Consultation to save the consultation.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I save the consultation after completing the required information? <span class="chevron">▼</span></div>
+                    <div class="faq-answer">After completing all the required information, click the Save Consultation button located at the bottom of the page to save the consultation.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Where can I view previous or upcoming appointments? <span class="chevron">▼</span></div>
@@ -659,12 +852,40 @@
                     <div class="faq-answer">من الشريط الجانبي للموقع، اضغط على Dashboard للاطلاع على المواعيد المحجوزة لليوم.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">كيف يمكنني البدء بالاستشارة؟ <span class="chevron">▼</span></div>
+                    <div class="faq-question">كيف يمكنني البدء بالاستشارة المكتبية؟<br>&amp;<br>ما هي الاقسام المتاحة عند بدء الاستشارة؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">من خلال Dashboard، ابحث عن اسم المريض ثم اضغط على النقاط الثلاث (…) الموجودة بجانب اسمه، واختر Start Consultation.<br><br>بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على Save Consultation لحفظ الاستشارة.<div class="note-box"><strong>ملاحظة:</strong> ستفتح صفحة مقسومة إلى قسمين:<br>• القسم الأيمن: يحتوي على معلومات الحجز، مثل تاريخ ووقت الموعد، بالإضافة إلى معلومات المريض، وما إذا كان هناك Current Care Plan أو أي تشخيصات سابقة (Previous Diagnoses).<br>• القسم الأيسر: يحتوي على خانات لإدخال معلومات الاستشارة، وتشمل: Reason for the Visit, Check-up, PFSH, Consultation, Prescription</div></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني إضافة مريض جديد؟ وكيف يمكنني القيام بذلك؟ <span class="chevron">▼</span></div>
                     <div class="faq-answer">من الشريط الجانبي للموقع، اختر Patient، ثم اضغط على Add New Patient.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تعبئة قسم Reason for the Visit وماذا يحتوي؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">بعد بدء الاستشارة، افتح قسم Reason for the Visit. ستجد خيارين:<br><br>• Symptoms Description: لكتابة وصف الأعراض التي يعاني منها المريض.<br>• Patient Notes: ملاحظات المريض.<div class="note-box"><strong>ملاحظة:</strong> ما هو سبب زيارة المريض وما هي الاعراض او الشكوى التي جاء بسببها.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني تعبئة قسم Check-up وماذا يحتوي؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">فتح قسم Check-up، حيث ستجد:<br><br>• Review of Systems: لتوثيق مراجعة أجهزة الجسم المختلفة.<br>• Vitals and Trends: لعرض وإدخال القراءات الحيوية مثل: الطول، الوزن، ضغط الدم وغيرها من القراءات الحيوية.<div class="note-box"><strong>ملاحظة:</strong> كما يمكنك الضغط على Add New Vital لإضافة قراءة حيوية جديدة.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا يتضمن قسم (PFSH)؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم (PFSH)، وستجد الخيارات التالية:<br><br>• Past Medical History: لإضافة التاريخ المرضي، مع إمكانية تحديد ما إذا كان المرض مزمنًا أم لا.<br>• Past Surgical History: لإضافة العمليات الجراحية السابقة.<br>• Medication History: لإضافة الأدوية التي استخدمها أو يستخدمها المريض.<br>• Vaccines: لإضافة المطاعيم.<br>• Allergies: لإضافة الحساسية.<br>• Family History: لإضافة أفراد العائلة وتوثيق الأمراض أو الحالات الصحية الخاصة بكل فرد.<br>• Social History: لإضافة المعلومات الاجتماعية المتعلقة بالمريض.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا يتضمن قسم Consultation؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم Consultation، حيث يمكنك إدخال المعلومات التالية:<br><br>• Consultation: تفاصيل الاستشارة الطبية.<br>• Public Note<br>• Private Note<br>• Diagnosis<br>• Procedures Performed: الإجراءات التي تم تنفيذها خلال الزيارة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ما الفرق بين Public Note و Private Note؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">• Public Note: تظهر لجميع الأطباء الذين يتابعون المريض، كما يمكن للمريض الاطلاع عليها.<br>• Private Note: تظهر فقط للطبيب الذي قام بإدخالها، ولا يمكن لبقية الأطباء أو المريض الاطلاع عليها.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">ماذا يتضمن قسم Prescription؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">افتح قسم Prescription، وستجد الخيارات التالية:<br><br>• Treatments: إضافة الخطة العلاجية.<br>• Hospital Procedures: إضافة الإجراءات الطبية أو إجراءات المستشفى.<br>• Medications: إضافة الأدوية.<br>• Referrals: إضافة التحويلات الطبية.<br>• Laboratory Tests: إضافة الفحوصات المخبرية.<br>• Radiology Tests: إضافة فحوصات الأشعة.<br>• Files: إرفاق الملفات أو المستندات المطلوبة.<div class="note-box"><strong>ملاحظة:</strong> بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على Save Consultation لحفظ الاستشارة.</div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">كيف يمكنني حفظ الاستشارة بعد الانتهاء من تعبئة البيانات؟ <span class="chevron">▼</span></div>
+                    <div class="faq-answer">بعد الانتهاء من تعبئة جميع المعلومات المطلوبة، اضغط على خيار Save Consultation الموجود أسفل الصفحة لحفظ الاستشارة.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">أين يمكنني الاطلاع على المواعيد السابقة أو القادمة؟ <span class="chevron">▼</span></div>
