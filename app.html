@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tadawa App - FAQs</title>
+    <title>Tadawa App FAQs</title>
     <style>
         :root {
             --primary: #2b6cb0;
@@ -24,7 +24,7 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-
+        
         body::before {
             content: "";
             position: fixed;
@@ -69,7 +69,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             position: relative;
         }
-
+        
         .brand-header {
             text-align: center;
             margin-bottom: 30px;
@@ -84,21 +84,15 @@
         h1 {
             text-align: center;
             color: var(--primary);
-            margin-bottom: 8px;
-            font-size: 1.8rem;
-        }
-        .subtitle {
-            text-align: center;
-            color: #718096;
             margin-bottom: 25px;
-            font-size: 1rem;
+            font-size: 1.8rem;
         }
 
         .content-box {
             border: 1px solid var(--border);
             padding: 25px;
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 8px;
         }
         .controls-row {
             display: flex;
@@ -162,7 +156,7 @@
             font-size: 0.98rem;
         }
         .faq-item.open .faq-answer { display: block; }
-
+        
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -217,7 +211,32 @@
             direction: ltr;
         }
 
-        /* ===== Mobile responsiveness ===== */
+        .page-footer {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            direction: ltr;
+        }
+        .footer-badges a {
+            display: inline-block;
+            line-height: 0;
+            transition: opacity 0.15s ease;
+        }
+        .footer-badges a:hover {
+            opacity: 0.85;
+        }
+        .footer-badges svg {
+            height: 44px;
+            display: block;
+        }
+
         @media (max-width: 640px) {
             body {
                 padding: 16px 10px;
@@ -234,12 +253,8 @@
             }
             h1 {
                 font-size: 1.3rem;
-                margin-bottom: 6px;
-                line-height: 1.4;
-            }
-            .subtitle {
-                font-size: 0.9rem;
                 margin-bottom: 18px;
+                line-height: 1.4;
             }
             .content-box {
                 padding: 16px 14px;
@@ -289,6 +304,13 @@
             .chevron {
                 flex-shrink: 0;
             }
+            .page-footer {
+                margin-top: 22px;
+                padding-top: 18px;
+            }
+            .footer-badges svg {
+                height: 38px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -301,18 +323,17 @@
 <body>
 
 <div class="container">
-
+    
     <div class="brand-header">
         <img src="logo.png" alt="Tadawa Logo" class="brand-logo">
     </div>
 
     <h1>Tadawa App FAQs / الأسئلة الشائعة لتطبيق تداوى</h1>
-    <p class="subtitle">Everything you need to know about using the Tadawa app / كل ما تحتاج معرفته عن استخدام تطبيق تداوى</p>
 
     <div class="content-box">
         <div class="controls-row">
             <div class="search-container">
-                <input type="text" id="search-input" class="search-bar" placeholder="Search... / ابحث...">
+                <input type="text" id="search-input" class="search-bar" placeholder="Search FAQs... / ابحث في الأسئلةالشائعة...">
             </div>
             <div class="lang-switch">
                 <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">English</button>
@@ -322,252 +343,250 @@
 
         <div id="no-results-msg" class="no-results">No matches found. / لم يتم العثور على نتائج.</div>
 
-<div class="faq-group faq-group-en active">
-<div class="faq-item">
-<div class="faq-question">What is Tadawa and how does it work? <span class="chevron">▼</span></div>
-<div class="faq-answer">Tadawa operates as a hybrid healthcare provider in Jordan, utilizing a highly integrated model that merges a sophisticated digital telehealth platform with robust physical clinical hubs. The company functions not merely as a software vendor but as a comprehensive healthcare orchestrator, strategically focused on delivering the primary care model ensure continuous, patient-centric medical management across all demographics.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I create a Tadawa account? <span class="chevron">▼</span></div>
-<div class="faq-answer">1.Download the App:Download the Tadawa application from your device's app store and open it.<br/>2.Start Registration:Tap on Create Account.<br/>3.Enter Identification Details:Provide your Phone Number and your National ID or Passport Number.<br/>4.Create a Password:Must meet security requirements.Set a secure password.<br/>5.Add Personal Information:Fill in your Date of Birth, Email address, and Gender.<br/>6.Verify via WhatsApp:You will receive a One-Time Password (OTP) via WhatsApp. Enter this code into the app to activate your account.<div class="note-box"><strong>Note:</strong> The Password must be at least 8 characters long and include at least 1 uppercase letter, 1 number, and 1 special symbol.</div>
-<div class="store-badges">
-<a aria-label="Download on the App Store" href="https://apps.apple.com/jo/app/tadawa/id6502606935" rel="noopener" target="_blank">
-<svg role="img" viewbox="0 0 135 40" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#000000" height="40" rx="7" width="135"></rect>
-<path d="M27.7 20.3c0-2.1 1.1-3.7 3.2-4.8-1.1-1.6-2.8-2.5-5-2.6-2.1-.1-4.1 1.4-5.2 1.4-1.1 0-2.8-1.4-4.7-1.4-2.6.1-5 1.5-6.3 3.9-2.7 4.7-.7 11.7 2 15.5 1.3 1.9 2.9 3.9 4.9 3.9 2 0 2.7-1.3 5-1.3 2.3 0 2.9 1.3 4.9 1.3 2 0 3.5-1.9 4.7-3.7.8-1.2 1.5-2.6 2-4.1-2.6-1.1-4.1-3.5-4.3-6.1zM23.9 11.5c.9-1.1 1.4-2.5 1.3-4-1.4.1-2.8.8-3.7 1.9-1 1-1.5 2.4-1.4 3.8 1.5.1 2.9-.6 3.8-1.7z" fill="#ffffff"></path>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="7.5" x="44" y="16.5">Download on the</text>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" x="44" y="29">App Store</text>
-</svg>
-</a>
-<a aria-label="Get it on Google Play" href="https://play.google.com/store/apps/details?id=com.tadawa_mobile2" rel="noopener" target="_blank">
-<svg role="img" viewbox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#000000" height="40" rx="7" width="150"></rect>
-<path d="M14.5 9.2c-.3.3-.5.8-.5 1.4v19c0 .6.2 1.1.5 1.4l.2.2 11.3-11.1v-.2L14.7 9z" fill="#00D2FF"></path>
-<path d="M30 21.5l-3.8-3.8-11.5 11.4.2.1c.4.3 1 .3 1.6 0z" fill="#00F076"></path>
-<path d="M30 21.5l-3.8-3.8 3.8-3.8 4.5 2.6c1.2.7 1.2 1.8 0 2.5z" fill="#FFB900"></path>
-<path d="M26.2 17.7l-11.5-11.3c.6-.3 1.2-.3 1.6 0l11.7 6.7z" fill="#FF3A44"></path>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="7.5" x="40" y="16.5">GET IT ON</text>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" x="40" y="29">Google Play</text>
-</svg>
-</a>
-</div>
-<div class="video-container">
-<iframe allow="autoplay" src="https://drive.google.com/file/d/1hnQ_3Z8DfuFQHLu7ROpCwIiPVPcYumMI/preview"></iframe>
-</div>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I add my insurance card? <span class="chevron">▼</span></div>
-<div class="faq-answer">Settings⚙️ - insurance \nThen enter the insurance information, including the insurance company name, insurance card number, and expiration date...</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I manage profiles for my family members under one account?<br/>or <br/>How do I add multiple sub-accounts under my main account? <span class="chevron">▼</span></div>
-<div class="faq-answer">Click on your name at the top of the screen, then select “Add New Account.” Enter the required information, and the sub-account will be added and appear under your main account.<div class="note-box"><strong>Note:</strong> There is no need to enter a phone number, as the sub-account will be automatically linked to the main account's phone number</div>
-<div class="video-container">
-<iframe allow="autoplay" src="https://drive.google.com/file/d/1e3LD-oS25C5jE2hj_1iFSqB-TL6CQakS/preview"></iframe>
-</div>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">I forgot my password. How can I reset it? <span class="chevron">▼</span></div>
-<div class="faq-answer">Tap “Forgot Password”, enter your National ID or Passport number, create a new password, and then enter the OTP sent to your WhatsApp.
-<div class="video-container">
-<iframe allow="autoplay" src="https://drive.google.com/file/d/18A2YVFHbrwLjR7uyP93h5MBY-7Xj9UUZ/preview"></iframe>
-</div>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I book a consultation with a doctor? <span class="chevron">▼</span></div>
-<div class="faq-answer">Choose a visit type: Office Visit, Remote Visit, Treat me now or Home Visit.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I book an Office Visit consultation? <span class="chevron">▼</span></div>
-<div class="faq-answer">Select Office Visit and choose the specialization you need.<br/>Choose your doctor and tap Go to Appointments.<br/>Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I book a Remote Visit consultation? <span class="chevron">▼</span></div>
-<div class="faq-answer">Select Remote Visit and choose the specialization you need.<br/>Choose your doctor and tap Go to Appointments.<br/>Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How do I book a Home Visit consultation? <span class="chevron">▼</span></div>
-<div class="faq-answer">Coming soon</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">What is the difference between a video consultation and a clinic visit? <span class="chevron">▼</span></div>
-<div class="faq-answer">A video consultation saves you time and effort—there is no need to leave your house, no waiting room time, and you can choose the exact time that suits you without traveling long distances to see your specialist.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">What is the difference between Remote visit, Treat me now and Urgent call? <span class="chevron">▼</span></div>
-<div class="faq-answer">"Remote Visit" is designed for non-urgent medical needs, routine check-ups, and follow-ups. It allows patients to schedule appointments in advance, choosing the specific date, time, and the doctor they want.<br/><br/>"Treat Me Now" is an innovative urgent care module providing instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.<br/><br/>"Urgent Call" is an innovative urgent care module that allows you to choose the specific doctor you want for instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Can I cancel or reschedule my appointment? Is there a fee? <span class="chevron">▼</span></div>
-<div class="faq-answer">No fees will be charged if the appointment is canceled more than two hours before the scheduled time.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">What should I do if the doctor doesn't join the video call? <span class="chevron">▼</span></div>
-<div class="faq-answer">Try calling again. The patient will be fully compensated with an alternative visit.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my medical reports and prescriptions after the consultation? <span class="chevron">▼</span></div>
-<div class="faq-answer">My tadawa-completed-choose your doctor-Consultation<br/>Or<br/>My health-test results-completed-choose your doctor-Consultation</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my Medications? <span class="chevron">▼</span></div>
-<div class="faq-answer">You can find your medications under "My Health" There, you can view your complete medication history, including all past and current prescriptions.<div class="note-box"><strong>Note:</strong> Turn on notifications to get reminders for your medication schedule</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my Appointments? <span class="chevron">▼</span></div>
-<div class="faq-answer">You can find your appointments under "My Health" There, you can view all your completed, cancelled, and upcoming appointments.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my care plan? <span class="chevron">▼</span></div>
-<div class="faq-answer">My Health section, Here, you can find all the information related to your healthcare plan and easily follow the recommended care steps.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my Test results? <span class="chevron">▼</span></div>
-<div class="faq-answer">My Health section, where you can access all your laboratory and diagnostic test results in one place. This allows you to review your records anytime and keep track of your health information more easily.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my Vaccines? <span class="chevron">▼</span></div>
-<div class="faq-answer">My Health section , where you can find a complete record of all the vaccinations you have received. Keeping your vaccination history in one place makes it easier to stay informed and access it whenever needed.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my Allergies? <span class="chevron">▼</span></div>
-<div class="faq-answer">My Health section, where you can view all your recorded allergies in one place. Keeping this information up to date helps healthcare providers make safer and more informed treatment decisions.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Where can I find my Vitals and trends? <span class="chevron">▼</span></div>
-<div class="faq-answer">My Health, select Vital and Trends to update and monitor measurements including height, weight, body temperature, heart rate, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels.<div class="note-box"><strong>Note:</strong> Track and update your vital signs regularly , including height, weight, heart rate, body temperature, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels, to monitor changes and maintain an up-to-date health record.</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How can a patient contact their Family Doctor after completing the required tests? <span class="chevron">▼</span></div>
-<div class="faq-answer">The test results are sent to the clinic’s WhatsApp number. An appointment (Office Visit or Treat Me Now) is then scheduled for the patient, and the patient is informed of the results. If needed, appropriate medications are prescribed or the necessary medical action is taken based on the results.</div>
-</div>
-</div>
-<div class="faq-group faq-group-ar rtl">
-<div class="faq-item">
-<div class="faq-question">ما هو تطبيق تداوى وكيف يعمل؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">تعمل شركة تداوى كمزود رعاية صحية هجين في الأردن، مستخدمةً نموذجًا متكاملًا يجمع بين منصة رقمية متطورة للرعاية الصحية عن بُعد ومراكز طبية فعلية قوية. ولا تقتصر وظيفة الشركة على كونها موردًا للبرمجيات فحسب، بل هي أيضًا جهة تنسيق شاملة للرعاية الصحية، تركز استراتيجيًا على تقديم نموذج الرعاية الصحية الأولية لضمان إدارة طبية مستمرة تتمحور حول المريض في جميع الفئات العمرية والاجتماعية.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف أنشئ حسابًا على تداوى؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">١. تحميل التطبيق: حمّل تطبيق تداوى من متجر التطبيقات على جهازك وافتحه.<br/>٢. بدء التسجيل: اضغط على "إنشاء حساب".<br/>٣. أدخل بيانات التعريف: أدخل رقم هاتفك ورقم هويتك الوطنية أو جواز سفرك<br/>٤. أنشئ كلمة مرور: يجب أن تستوفي متطلبات الأمان. اختر كلمة مرور قوية.<br/>٥. أضف معلوماتك الشخصية: أدخل تاريخ ميلادك، وبريدك الإلكتروني، وجنسك.<br/>٦. فعّل حسابك عبر واتساب: ستتلقى رمز التحقق لمرة واحدة (OTP) عبر واتساب. أدخل هذا الرمز في التطبيق لتفعيل حسابك.<div class="note-box"><strong>ملاحظة:</strong> يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وأن تتضمن حرفًا كبيرًا واحدًا على الأقل، ورقمًا واحدًا على الأقل، ورمزًا خاصًا واحدًا على الأقل.</div>
-<div class="store-badges">
-<a aria-label="Download on the App Store" href="https://apps.apple.com/jo/app/tadawa/id6502606935" rel="noopener" target="_blank">
-<svg role="img" viewbox="0 0 135 40" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#000000" height="40" rx="7" width="135"></rect>
-<path d="M27.7 20.3c0-2.1 1.1-3.7 3.2-4.8-1.1-1.6-2.8-2.5-5-2.6-2.1-.1-4.1 1.4-5.2 1.4-1.1 0-2.8-1.4-4.7-1.4-2.6.1-5 1.5-6.3 3.9-2.7 4.7-.7 11.7 2 15.5 1.3 1.9 2.9 3.9 4.9 3.9 2 0 2.7-1.3 5-1.3 2.3 0 2.9 1.3 4.9 1.3 2 0 3.5-1.9 4.7-3.7.8-1.2 1.5-2.6 2-4.1-2.6-1.1-4.1-3.5-4.3-6.1zM23.9 11.5c.9-1.1 1.4-2.5 1.3-4-1.4.1-2.8.8-3.7 1.9-1 1-1.5 2.4-1.4 3.8 1.5.1 2.9-.6 3.8-1.7z" fill="#ffffff"></path>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="7.5" x="44" y="16.5">Download on the</text>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" x="44" y="29">App Store</text>
-</svg>
-</a>
-<a aria-label="Get it on Google Play" href="https://play.google.com/store/apps/details?id=com.tadawa_mobile2" rel="noopener" target="_blank">
-<svg role="img" viewbox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#000000" height="40" rx="7" width="150"></rect>
-<path d="M14.5 9.2c-.3.3-.5.8-.5 1.4v19c0 .6.2 1.1.5 1.4l.2.2 11.3-11.1v-.2L14.7 9z" fill="#00D2FF"></path>
-<path d="M30 21.5l-3.8-3.8-11.5 11.4.2.1c.4.3 1 .3 1.6 0z" fill="#00F076"></path>
-<path d="M30 21.5l-3.8-3.8 3.8-3.8 4.5 2.6c1.2.7 1.2 1.8 0 2.5z" fill="#FFB900"></path>
-<path d="M26.2 17.7l-11.5-11.3c.6-.3 1.2-.3 1.6 0l11.7 6.7z" fill="#FF3A44"></path>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="7.5" x="40" y="16.5">GET IT ON</text>
-<text fill="#ffffff" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" x="40" y="29">Google Play</text>
-</svg>
-</a>
-</div>
-<div class="video-container">
-<iframe allow="autoplay" src="https://drive.google.com/file/d/1hnQ_3Z8DfuFQHLu7ROpCwIiPVPcYumMI/preview"></iframe>
-</div>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف أضيف بطاقة التأمين الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">الاعدادات⚙️- التأمين - ثم أضف معلومات التأمين، بما في ذلك اسم شركة التأمين، ورقم بطاقة التأمين، وتاريخ انتهاء التأمين...</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">هل يمكنني إدارة ملفات تعريف أفراد عائلتي من خلال حساب واحد؟<br/>أو <br/>كيف يمكنني إضافة حسابات فرعية متعددة تحت حسابي الرئيسي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">انقر على اسمك في أعلى الشاشة، ثم حدد "إضافة حساب جديد". أدخل المعلومات المطلوبة، وسيتم إضافة الحساب الفرعي وسيظهر تحت حسابك الرئيسي.<div class="note-box"><strong>ملاحظة:</strong> لا حاجة لادخال رقم الهاتف حيث سيتم ربط الحساب الفرعي برقم الهاتف الخاص بالحساب الرئيسي تلقائيا</div>
-<div class="video-container">
-<iframe allow="autoplay" src="https://drive.google.com/file/d/1e3LD-oS25C5jE2hj_1iFSqB-TL6CQakS/preview"></iframe>
-</div>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">نسيت كلمة المرور الخاصة بي. كيف يمكنني استعادتها؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">انقر على "نسيت كلمة المرور"، وأدخل رقم هويتك الوطنية أو رقم جواز سفرك، وأنشئ كلمة مرور جديدة، ثم أدخل رمز التحقق المرسل إلى تطبيق واتساب الخاص بك.
-<div class="video-container">
-<iframe allow="autoplay" src="https://drive.google.com/file/d/18A2YVFHbrwLjR7uyP93h5MBY-7Xj9UUZ/preview"></iframe>
-</div>
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف أحجز موعد استشارة مع طبيب؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">اختر نوع الزيارة: زيارة مكتبية، استشارة عن بعد، أو زيارة منزلية.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف يمكنني حجز موعد استشارة في المكتب؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">اختر "زيارة الطبيب" ثم حدد التخصص المطلوب.<br/>اختر طبيبك ثم اضغط على "الذهاب إلى المواعيد".<br/>حدد التاريخ والوقت المناسبين لك لتأكيد حجزك فورًا.<div class="note-box"><strong>ملاحظة:</strong> إذا فعّلت خيار التأمين, سيعرض التطبيق الأطباء المشمولين بتأمينك فقط.</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف يمكنني حجز موعد استشارة عن بُعد؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">اختر "استشارة عن بُعد" ثم حدد التخصص المطلوب.<br/>اختر طبيبك ثم اضغط على "الذهاب إلى المواعيد".<br/>حدد التاريخ والوقت المناسبين لك لتأكيد حجزك فورًا.<div class="note-box"><strong>ملاحظة:</strong> إذا فعّلت خيار التأمين, سيعرض التطبيق الأطباء المشمولين بتأمينك فقط.</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف يمكنني حجز زيارة منزلية؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">قيد التنفيذ</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">ما الفرق بين الاستشارة عبر الفيديو وزيارة العيادة؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">الاستشارة المرئية توفر عليك الوقت والجهد؛ فلا داعي لمغادرة المنزل أو الانتظار في العيادة، ويمكنك اختيار الوقت الذي يناسبك دون الحجة لقطع مسافات طويلة لرؤية طبيبك المختص.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">ما الفرق بين الاستشارة عن بعد, وعلاجي الآن, والمكالمة العاجلة؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">"استشارة عن بُعد" صُممت لتلبية الاحتياجات الطبية غير العاجلة، والفحوصات الروتينية، والمتابعات. وتتيح هذه الخدمة للمرضى حجز المواعيد مسبقًا، واختيار التاريخ والوقت والطبيب الذي يرغبون في مقابلته.<br/><br/>"عالجني الان" عبارة عن وحدة رعاية عاجلة مبتكرة توفر استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، وتعمل كبديل رقمي منخفض التكلفة لزيارات غرف الطوارئ المكلفة.<br/><br/>"مكالمة عاجلة" عبارة عن وحدة رعاية عاجلة مبتكرة تتيح لك اختيار الطبيب المحدد الذي تريده لإجراء استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، مما يوفر بديلاً رقميًا منخفض التكلفة لزيارات غرف الطوارئ المكلفة.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">هل يمكنني إلغاء موعدي أو إعادة جدولته؟ هل هناك رسوم؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">لن يتم تحصيل أي رسوم إذا تم إلغاء الموعد قبل أكثر من ساعتين من الموعد المحدد.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">ماذا أفعل إذا لم ينضم الطبيب إلى مكالمة الفيديو؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">يُرجى المحاولة مرة أخرى. سيتم تعويض المريض بالكامل من خلال زيارة بديلة.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">أين أجد تقاريري الطبية ووصفاتي الطبية بعد الاستشارة؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">تداوىٰ - المكتملة - (اختر طبيبك)-التشخيص<br/><br/>أو اكتملت نتائج فحاصاتي الصحية - اختر طبيبك</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد الادوية الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">يمكنك العثور على أدويتك ضمن قسم "صحتي". هناك، يمكنك الاطلاع على تاريخ أدويتك الكامل، بما في ذلك جميع الوصفات الطبية السابقة والحالية.<div class="note-box"><strong>ملاحظة:</strong> قم بتفعيل الإشعارات لتلقي تذكيرات بمواعيد تناول أدويتك</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد المواعيد الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">يمكنك العثور على مواعيدك ضمن "صحتي"، يمكنك الاطلاع على جميع مواعيدك المكتملة والملغاة والقادمة.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد خطة الرعاية الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">قسم صحتي، هنا يمكنك العثور على جميع المعلومات المتعلقة بخطة الرعاية الصحية الخاصة بك واتباع خطوات الرعاية الموصى بها بسهولة.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد نتائج الفحوصات الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">افتح قسم "صحتي" في تطبيق تداوى، حيث يمكنك الوصول إلى جميع نتائج فحوصاتك المخبرية والتشخيصية في مكان واحد. يتيح لك هذا مراجعة سجلاتك في أي وقت ومتابعة معلوماتك الصحية بسهولة أكبر.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد اللقاحات الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">قسم "صحتي" حيث يمكنك الاطلاع على سجل كامل لجميع اللقاحات التي تلقيتها. إن الاحتفاظ بسجل تطعيماتك في مكان واحد يُسهّل عليك البقاء على اطلاع والوصول إليه عند الحاجة.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد الحساسية؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">قسم "صحتي" حيث يمكنك الاطلاع على جميع أنواع الحساسية المسجلة لديك في مكان واحد. يساعد تحديث هذه المعلومات مقدمي الرعاية الصحية على اتخاذ قرارات علاجية أكثر أمانًا واستنارة.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">اين اجد القراءات الحيوية الخاصة بي؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">في قسم "صحتي"، اختر "البيانات الحيوية والاتجاهات" لتحديث ومراقبة القياسات بما في ذلك الطول والوزن ودرجة حرارة الجسم ومعدل ضربات القلب وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم.<div class="note-box"><strong>ملاحظة:</strong> قم بتتبع وتحديث علاماتك الحيوية بانتظام , بما في ذلك الطول والوزن ومعدل ضربات القلب ودرجة حرارة الجسم وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم، لمراقبة التغييرات والحفاظ على سجل صحي محدث.</div></div>
-</div>
-<div class="faq-item">
-<div class="faq-question">كيف يمكن للمريض التواصل مع طبيب الأسرة بعد إتمام الفحوصات المطلوبة؟ <span class="chevron">▼</span></div>
-<div class="faq-answer">يتم إرسال نتائج التحاليل إلى رقم واتساب العيادة. بعد ذلك، يتم حجز موعد للمريض (Office Visit أو Treat Me Now) وإبلاغه بنتائج التحاليل. عند الحاجة، يتم وصف الأدوية المناسبة أو اتخاذ الإجراء الطبي المناسب بناءً على النتائج.</div>
-</div>
-</div>
+        <!-- ENGLISH FAQS -->
+        <div class="faq-group faq-group-en active">
+            <div class="faq-item">
+                <div class="faq-question">What is Tadawa and how does it work? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Tadawa operates as a hybrid healthcare provider in Jordan, utilizing a highly integrated model that merges a sophisticated digital telehealth platform with robust physical clinical hubs. The company functions not merely as a software vendor but as a comprehensive healthcare orchestrator, strategically focused on delivering the primary care model ensure continuous, patient-centric medical management across all demographics.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I create a Tadawa account? <span class="chevron">▼</span></div>
+                <div class="faq-answer">1.Download the App:Download the Tadawa application from your device's app store and open it.<br>2.Start Registration:Tap on Create Account.<br>3.Enter Identification Details:Provide your Phone Number and your National ID or Passport Number.<br>4.Create a Password:Must meet security requirements.Set a secure password.<br>5.Add Personal Information:Fill in your Date of Birth, Email address, and Gender.<br>6.Verify via WhatsApp:You will receive a One-Time Password (OTP) via WhatsApp. Enter this code into the app to activate your account.<div class="note-box"><strong>Note:</strong> The Password must be at least 8 characters long and include at least 1 uppercase letter, 1 number, and 1 special symbol.</div>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1hnQ_3Z8DfuFQHLu7ROpCwIiPVPcYumMI/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I add my insurance card? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Settings⚙️ - insurance \nThen enter the insurance information, including the insurance company name, insurance card number, and expiration date...</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I manage profiles for my family members under one account?<br>or <br>How do I add multiple sub-accounts under my main account? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Click on your name at the top of the screen, then select “Add New Account.” Enter the required information, and the sub-account will be added and appear under your main account.<div class="note-box"><strong>Note:</strong> There is no need to enter a phone number, as the sub-account will be automatically linked to the main account's phone number</div>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1e3LD-oS25C5jE2hj_1iFSqB-TL6CQakS/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">I forgot my password. How can I reset it? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Tap “Forgot Password”, enter your National ID or Passport number, create a new password, and then enter the OTP sent to your WhatsApp.
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/18A2YVFHbrwLjR7uyP93h5MBY-7Xj9UUZ/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I book a consultation with a doctor? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Choose a visit type: Office Visit, Remote Visit, Treat me now or Home Visit.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I book an Office Visit consultation? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Select Office Visit and choose the specialization you need.<br>Choose your doctor and tap Go to Appointments.<br>Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I book a Remote Visit consultation? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Select Remote Visit and choose the specialization you need.<br>Choose your doctor and tap Go to Appointments.<br>Select your preferred date and time to confirm your booking immediately<div class="note-box"><strong>Note:</strong> If you turn on the insurance option, the app will show only doctors supported by your insurance.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I book a Home Visit consultation? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Coming soon</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the difference between a video consultation and a clinic visit? <span class="chevron">▼</span></div>
+                <div class="faq-answer">A video consultation saves you time and effort—there is no need to leave your house, no waiting room time, and you can choose the exact time that suits you without traveling long distances to see your specialist.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the difference between Remote visit, Treat me now and Urgent call? <span class="chevron">▼</span></div>
+                <div class="faq-answer">&quot;Remote Visit&quot; is designed for non-urgent medical needs, routine check-ups, and follow-ups. It allows patients to schedule appointments in advance, choosing the specific date, time, and the doctor they want.<br><br>&quot;Treat Me Now&quot; is an innovative urgent care module providing instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.<br><br>&quot;Urgent Call&quot; is an innovative urgent care module that allows you to choose the specific doctor you want for instant, on-demand family doctor consultations for acute conditions, serving as a low-cost digital alternative to expensive emergency room visits.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel or reschedule my appointment? Is there a fee? <span class="chevron">▼</span></div>
+                <div class="faq-answer">No fees will be charged if the appointment is canceled more than two hours before the scheduled time.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What should I do if the doctor doesn't join the video call? <span class="chevron">▼</span></div>
+                <div class="faq-answer">Try calling again. The patient will be fully compensated with an alternative visit.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my medical reports and prescriptions after the consultation? <span class="chevron">▼</span></div>
+                <div class="faq-answer">My tadawa-completed-choose your doctor-Consultation<br>Or<br>My health-test results-completed-choose your doctor-Consultation</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my Medications? <span class="chevron">▼</span></div>
+                <div class="faq-answer">You can find your medications under &quot;My Health&quot; There, you can view your complete medication history, including all past and current prescriptions.<div class="note-box"><strong>Note:</strong> Turn on notifications to get reminders for your medication schedule</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my Appointments? <span class="chevron">▼</span></div>
+                <div class="faq-answer">You can find your appointments under &quot;My Health&quot; There, you can view all your completed, cancelled, and upcoming appointments.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my care plan? <span class="chevron">▼</span></div>
+                <div class="faq-answer">My Health section, Here, you can find all the information related to your healthcare plan and easily follow the recommended care steps.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my Test results? <span class="chevron">▼</span></div>
+                <div class="faq-answer">My Health section, where you can access all your laboratory and diagnostic test results in one place. This allows you to review your records anytime and keep track of your health information more easily.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my Vaccines? <span class="chevron">▼</span></div>
+                <div class="faq-answer">My Health section , where you can find a complete record of all the vaccinations you have received. Keeping your vaccination history in one place makes it easier to stay informed and access it whenever needed.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my Allergies? <span class="chevron">▼</span></div>
+                <div class="faq-answer">My Health section, where you can view all your recorded allergies in one place. Keeping this information up to date helps healthcare providers make safer and more informed treatment decisions.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I find my Vitals and trends? <span class="chevron">▼</span></div>
+                <div class="faq-answer">My Health, select Vital and Trends to update and monitor measurements including height, weight, body temperature, heart rate, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels.<div class="note-box"><strong>Note:</strong> Track and update your vital signs regularly , including height, weight, heart rate, body temperature, blood pressure, oxygen saturation, respiratory rate, and blood glucose levels, to monitor changes and maintain an up-to-date health record.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can a patient contact their Family Doctor after completing the required tests? <span class="chevron">▼</span></div>
+                <div class="faq-answer">The test results are sent to the clinic’s WhatsApp number. An appointment (Office Visit or Treat Me Now) is then scheduled for the patient, and the patient is informed of the results. If needed, appropriate medications are prescribed or the necessary medical action is taken based on the results.</div>
+            </div>
+        </div>
+
+        <!-- ARABIC FAQS -->
+        <div class="faq-group faq-group-ar rtl">
+            <div class="faq-item">
+                <div class="faq-question">ما هو تطبيق تداوى وكيف يعمل؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">تعمل شركة تداوى كمزود رعاية صحية هجين في الأردن، مستخدمةً نموذجًا متكاملًا يجمع بين منصة رقمية متطورة للرعاية الصحية عن بُعد ومراكز طبية فعلية قوية. ولا تقتصر وظيفة الشركة على كونها موردًا للبرمجيات فحسب، بل هي أيضًا جهة تنسيق شاملة للرعاية الصحية، تركز استراتيجيًا على تقديم نموذج الرعاية الصحية الأولية لضمان إدارة طبية مستمرة تتمحور حول المريض في جميع الفئات العمرية والاجتماعية.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف أنشئ حسابًا على تداوى؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">١. تحميل التطبيق: حمّل تطبيق تداوى من متجر التطبيقات على جهازك وافتحه.<br>٢. بدء التسجيل: اضغط على &quot;إنشاء حساب&quot;.<br>٣. أدخل بيانات التعريف: أدخل رقم هاتفك ورقم هويتك الوطنية أو جواز سفرك<br>٤. أنشئ كلمة مرور: يجب أن تستوفي متطلبات الأمان. اختر كلمة مرور قوية.<br>٥. أضف معلوماتك الشخصية: أدخل تاريخ ميلادك، وبريدك الإلكتروني، وجنسك.<br>٦. فعّل حسابك عبر واتساب: ستتلقى رمز التحقق لمرة واحدة (OTP) عبر واتساب. أدخل هذا الرمز في التطبيق لتفعيل حسابك.<div class="note-box"><strong>ملاحظة:</strong> يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وأن تتضمن حرفًا كبيرًا واحدًا على الأقل، ورقمًا واحدًا على الأقل، ورمزًا خاصًا واحدًا على الأقل.</div>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1hnQ_3Z8DfuFQHLu7ROpCwIiPVPcYumMI/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف أضيف بطاقة التأمين الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">الاعدادات⚙️- التأمين - ثم أضف معلومات التأمين، بما في ذلك اسم شركة التأمين، ورقم بطاقة التأمين، وتاريخ انتهاء التأمين...</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">هل يمكنني إدارة ملفات تعريف أفراد عائلتي من خلال حساب واحد؟<br>أو <br>كيف يمكنني إضافة حسابات فرعية متعددة تحت حسابي الرئيسي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">انقر على اسمك في أعلى الشاشة، ثم حدد &quot;إضافة حساب جديد&quot;. أدخل المعلومات المطلوبة، وسيتم إضافة الحساب الفرعي وسيظهر تحت حسابك الرئيسي.<div class="note-box"><strong>ملاحظة:</strong> لا حاجة لادخال رقم الهاتف حيث سيتم ربط الحساب الفرعي برقم الهاتف الخاص بالحساب الرئيسي تلقائيا</div>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1e3LD-oS25C5jE2hj_1iFSqB-TL6CQakS/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">نسيت كلمة المرور الخاصة بي. كيف يمكنني استعادتها؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">انقر على &quot;نسيت كلمة المرور&quot;، وأدخل رقم هويتك الوطنية أو رقم جواز سفرك، وأنشئ كلمة مرور جديدة، ثم أدخل رمز التحقق المرسل إلى تطبيق واتساب الخاص بك.
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/18A2YVFHbrwLjR7uyP93h5MBY-7Xj9UUZ/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف أحجز موعد استشارة مع طبيب؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">اختر نوع الزيارة: زيارة مكتبية، استشارة عن بعد، أو زيارة منزلية.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف يمكنني حجز موعد استشارة في المكتب؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">اختر &quot;زيارة الطبيب&quot; ثم حدد التخصص المطلوب.<br>اختر طبيبك ثم اضغط على &quot;الذهاب إلى المواعيد&quot;.<br>حدد التاريخ والوقت المناسبين لك لتأكيد حجزك فورًا.<div class="note-box"><strong>ملاحظة:</strong> إذا فعّلت خيار التأمين, سيعرض التطبيق الأطباء المشمولين بتأمينك فقط.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف يمكنني حجز موعد استشارة عن بُعد؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">اختر &quot;استشارة عن بُعد&quot; ثم حدد التخصص المطلوب.<br>اختر طبيبك ثم اضغط على &quot;الذهاب إلى المواعيد&quot;.<br>حدد التاريخ والوقت المناسبين لك لتأكيد حجزك فورًا.<div class="note-box"><strong>ملاحظة:</strong> إذا فعّلت خيار التأمين, سيعرض التطبيق الأطباء المشمولين بتأمينك فقط.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف يمكنني حجز زيارة منزلية؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">قيد التنفيذ</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">ما الفرق بين الاستشارة عبر الفيديو وزيارة العيادة؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">الاستشارة المرئية توفر عليك الوقت والجهد؛ فلا داعي لمغادرة المنزل أو الانتظار في العيادة، ويمكنك اختيار الوقت الذي يناسبك دون الحجة لقطع مسافات طويلة لرؤية طبيبك المختص.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">ما الفرق بين الاستشارة عن بعد, وعلاجي الآن, والمكالمة العاجلة؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">&quot;استشارة عن بُعد&quot; صُممت لتلبية الاحتياجات الطبية غير العاجلة، والفحوصات الروتينية، والمتابعات. وتتيح هذه الخدمة للمرضى حجز المواعيد مسبقًا، واختيار التاريخ والوقت والطبيب الذي يرغبون في مقابلته.<br><br>&quot;عالجني الان&quot; عبارة عن وحدة رعاية عاجلة مبتكرة توفر استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، وتعمل كبديل رقمي منخفض التكلفة لزيارات غرف الطوارئ المكلفة.<br><br>&quot;مكالمة عاجلة&quot; عبارة عن وحدة رعاية عاجلة مبتكرة تتيح لك اختيار الطبيب المحدد الذي تريده لإجراء استشارات فورية عند الطلب مع طبيب الأسرة للحالات الحادة، مما يوفر بديلاً رقميًا منخفض التكلفة لزيارات غرف الطوارئ المكلفة.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">هل يمكنني إلغاء موعدي أو إعادة جدولته؟ هل هناك رسوم؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">لن يتم تحصيل أي رسوم إذا تم إلغاء الموعد قبل أكثر من ساعتين من الموعد المحدد.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">ماذا أفعل إذا لم ينضم الطبيب إلى مكالمة الفيديو؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">يُرجى المحاولة مرة أخرى. سيتم تعويض المريض بالكامل من خلال زيارة بديلة.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">أين أجد تقاريري الطبية ووصفاتي الطبية بعد الاستشارة؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">تداوىٰ - المكتملة - (اختر طبيبك)-التشخيص<br><br>أو اكتملت نتائج فحاصاتي الصحية - اختر طبيبك</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد الادوية الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">يمكنك العثور على أدويتك ضمن قسم &quot;صحتي&quot;. هناك، يمكنك الاطلاع على تاريخ أدويتك الكامل، بما في ذلك جميع الوصفات الطبية السابقة والحالية.<div class="note-box"><strong>ملاحظة:</strong> قم بتفعيل الإشعارات لتلقي تذكيرات بمواعيد تناول أدويتك</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد المواعيد الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">يمكنك العثور على مواعيدك ضمن &quot;صحتي&quot;، يمكنك الاطلاع على جميع مواعيدك المكتملة والملغاة والقادمة.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد خطة الرعاية الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">قسم صحتي، هنا يمكنك العثور على جميع المعلومات المتعلقة بخطة الرعاية الصحية الخاصة بك واتباع خطوات الرعاية الموصى بها بسهولة.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد نتائج الفحوصات الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">افتح قسم &quot;صحتي&quot; في تطبيق تداوى، حيث يمكنك الوصول إلى جميع نتائج فحوصاتك المخبرية والتشخيصية في مكان واحد. يتيح لك هذا مراجعة سجلاتك في أي وقت ومتابعة معلوماتك الصحية بسهولة أكبر.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد اللقاحات الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">قسم &quot;صحتي&quot; حيث يمكنك الاطلاع على سجل كامل لجميع اللقاحات التي تلقيتها. إن الاحتفاظ بسجل تطعيماتك في مكان واحد يُسهّل عليك البقاء على اطلاع والوصول إليه عند الحاجة.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد الحساسية؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">قسم &quot;صحتي&quot; حيث يمكنك الاطلاع على جميع أنواع الحساسية المسجلة لديك في مكان واحد. يساعد تحديث هذه المعلومات مقدمي الرعاية الصحية على اتخاذ قرارات علاجية أكثر أمانًا واستنارة.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">اين اجد القراءات الحيوية الخاصة بي؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">في قسم &quot;صحتي&quot;، اختر &quot;البيانات الحيوية والاتجاهات&quot; لتحديث ومراقبة القياسات بما في ذلك الطول والوزن ودرجة حرارة الجسم ومعدل ضربات القلب وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم.<div class="note-box"><strong>ملاحظة:</strong> قم بتتبع وتحديث علاماتك الحيوية بانتظام , بما في ذلك الطول والوزن ومعدل ضربات القلب ودرجة حرارة الجسم وضغط الدم وتشبع الأكسجين ومعدل التنفس ومستويات الجلوكوز في الدم، لمراقبة التغييرات والحفاظ على سجل صحي محدث.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف يمكن للمريض التواصل مع طبيب الأسرة بعد إتمام الفحوصات المطلوبة؟ <span class="chevron">▼</span></div>
+                <div class="faq-answer">يتم إرسال نتائج التحاليل إلى رقم واتساب العيادة. بعد ذلك، يتم حجز موعد للمريض (Office Visit أو Treat Me Now) وإبلاغه بنتائج التحاليل. عند الحاجة، يتم وصف الأدوية المناسبة أو اتخاذ الإجراء الطبي المناسب بناءً على النتائج.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page-footer">
+        <div class="footer-badges">
+            <a href="https://tadawa.com/" target="_blank" rel="noopener" aria-label="Visit Tadawa.com">
+                <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg" role="img">
+                    <rect width="150" height="40" rx="7" fill="#000000"/>
+                    <circle cx="20" cy="20" r="9" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+                    <ellipse cx="20" cy="20" rx="3.8" ry="9" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+                    <line x1="11" y1="20" x2="29" y2="20" stroke="#ffffff" stroke-width="1.4"/>
+                    <line x1="13" y1="14.3" x2="27" y2="14.3" stroke="#ffffff" stroke-width="1.2"/>
+                    <line x1="13" y1="25.7" x2="27" y2="25.7" stroke="#ffffff" stroke-width="1.2"/>
+                    <text x="38" y="16.5" font-family="Arial, sans-serif" font-size="7.5" fill="#ffffff">Visit our</text>
+                    <text x="38" y="29" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" fill="#ffffff">Website</text>
+                </svg>
+            </a>
+            <a href="https://apps.apple.com/jo/app/tadawa/id6502606935" target="_blank" rel="noopener" aria-label="Download on the App Store">
+                <svg viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg" role="img">
+                    <rect width="135" height="40" rx="7" fill="#000000"/>
+                    <path d="M27.7 20.3c0-2.1 1.1-3.7 3.2-4.8-1.1-1.6-2.8-2.5-5-2.6-2.1-.1-4.1 1.4-5.2 1.4-1.1 0-2.8-1.4-4.7-1.4-2.6.1-5 1.5-6.3 3.9-2.7 4.7-.7 11.7 2 15.5 1.3 1.9 2.9 3.9 4.9 3.9 2 0 2.7-1.3 5-1.3 2.3 0 2.9 1.3 4.9 1.3 2 0 3.5-1.9 4.7-3.7.8-1.2 1.5-2.6 2-4.1-2.6-1.1-4.1-3.5-4.3-6.1zM23.9 11.5c.9-1.1 1.4-2.5 1.3-4-1.4.1-2.8.8-3.7 1.9-1 1-1.5 2.4-1.4 3.8 1.5.1 2.9-.6 3.8-1.7z" fill="#ffffff"/>
+                    <text x="44" y="16.5" font-family="Arial, sans-serif" font-size="7.5" fill="#ffffff">Download on the</text>
+                    <text x="44" y="29" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" fill="#ffffff">App Store</text>
+                </svg>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.tadawa_mobile2" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+                <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg" role="img">
+                    <rect width="150" height="40" rx="7" fill="#000000"/>
+                    <path d="M14.5 9.2c-.3.3-.5.8-.5 1.4v19c0 .6.2 1.1.5 1.4l.2.2 11.3-11.1v-.2L14.7 9z" fill="#00D2FF"/>
+                    <path d="M30 21.5l-3.8-3.8-11.5 11.4.2.1c.4.3 1 .3 1.6 0z" fill="#00F076"/>
+                    <path d="M30 21.5l-3.8-3.8 3.8-3.8 4.5 2.6c1.2.7 1.2 1.8 0 2.5z" fill="#FFB900"/>
+                    <path d="M26.2 17.7l-11.5-11.3c.6-.3 1.2-.3 1.6 0l11.7 6.7z" fill="#FF3A44"/>
+                    <text x="40" y="16.5" font-family="Arial, sans-serif" font-size="7.5" fill="#ffffff">GET IT ON</text>
+                    <text x="40" y="29" font-family="Arial, sans-serif" font-size="14.5" font-weight="600" fill="#ffffff">Google Play</text>
+                </svg>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -588,14 +607,14 @@
     function filterFAQs() {
         const query = searchInput.value.toLowerCase().trim();
         const activeGroup = document.querySelector(`.faq-group-${currentLang}`);
-        if (!activeGroup) return;
+        if(!activeGroup) return;
         const faqItems = activeGroup.getElementsByClassName('faq-item');
         let visibleCount = 0;
-
+        
         for (let item of faqItems) {
             const questionText = item.querySelector('.faq-question').innerText.toLowerCase();
             const answerText = item.querySelector('.faq-answer').innerText.toLowerCase();
-
+            
             if (questionText.includes(query) || answerText.includes(query)) {
                 item.style.display = 'block';
                 visibleCount++;
@@ -612,19 +631,20 @@
         currentLang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.faq-group').forEach(g => g.classList.remove('active'));
+        
         const targetGroup = document.querySelector(`.faq-group-${lang}`);
-        if (targetGroup) targetGroup.classList.add('active');
+        if(targetGroup) targetGroup.classList.add('active');
 
-        if (lang === 'en') {
+        const searchInput = document.getElementById('search-input');
+        if(lang === 'en') {
             document.getElementById('btn-en').classList.add('active');
-            searchInput.placeholder = "Search...";
+            searchInput.placeholder = "Search FAQs...";
             searchInput.style.direction = 'ltr';
         } else {
             document.getElementById('btn-ar').classList.add('active');
-            searchInput.placeholder = "...ابحث";
+            searchInput.placeholder = "...ابحث في الأسئلة الشائعة";
             searchInput.style.direction = 'rtl';
         }
-        searchInput.value = '';
         filterFAQs();
     }
 </script>
