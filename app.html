@@ -176,6 +176,70 @@
             height: 100%;
             border: 0;
         }
+
+        /* Carousel Styles for Swipe / Next Step Gallery */
+        .carousel-wrapper {
+            position: relative;
+            margin-top: 15px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .carousel-track-container {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: #000;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .carousel-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a202c;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(43, 108, 176, 0.85);
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            z-index: 5;
+            transition: background 0.2s ease;
+        }
+        .carousel-nav-btn:hover {
+            background: var(--primary-hover);
+        }
+        .carousel-btn-prev { left: 8px; }
+        .carousel-btn-next { right: 8px; }
+        .carousel-step-indicator {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
         .note-box {
             margin-top: 8px;
             background: #edf2f7;
@@ -407,7 +471,22 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">Can I cancel or reschedule my appointment? Is there a fee? <span class="chevron">▼</span></div>
-                <div class="faq-answer">No fees will be charged if the appointment is canceled more than two hours before the scheduled time.</div>
+                <div class="faq-answer">No fees will be charged if the appointment is canceled more than two hours before the scheduled time.
+                    
+                    <!-- SWIPE CAROUSEL STEPS FOR CANCELLING APPOINTMENTS -->
+                    <div class="carousel-wrapper">
+                        <button class="carousel-nav-btn carousel-btn-prev" onclick="scrollCarousel('carousel-cancel-en', -1)">❮</button>
+                        <div id="carousel-cancel-en" class="carousel-track-container" onscroll="updateStepIndicator('carousel-cancel-en', 'step-cancel-en')">
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1bmqhXN8wEGM7f030QfewpRX87zgPNGuK" alt="Step 1"></div>
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1G_etkw7Co2BWvLl3uCyEO_lPKsoiq1cS" alt="Step 2"></div>
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1YYKDrqItiON42oAFAGtwBTn-Ns_Vgjfw" alt="Step 3"></div>
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1HGUlC8k6fgRIUTqNbnv_07mK8p13_KB3" alt="Step 4"></div>
+                        </div>
+                        <button class="carousel-nav-btn carousel-btn-next" onclick="scrollCarousel('carousel-cancel-en', 1)">❯</button>
+                        <div id="step-cancel-en" class="carousel-step-indicator">Step 1 of 4 (Swipe or click arrows)</div>
+                    </div>
+
+                </div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What should I do if the doctor doesn't join the video call? <span class="chevron">▼</span></div>
@@ -539,7 +618,22 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">هل يمكنني إلغاء موعدي أو إعادة جدولته؟ هل هناك رسوم؟ <span class="chevron">▼</span></div>
-                <div class="faq-answer">لن يتم تحصيل أي رسوم إذا تم إلغاء الموعد قبل أكثر من ساعتين من الموعد المحدد.</div>
+                <div class="faq-answer">لن يتم تحصيل أي رسوم إذا تم إلغاء الموعد قبل أكثر من ساعتين من الموعد المحدد.
+
+                    <!-- SWIPE CAROUSEL STEPS FOR CANCELLING APPOINTMENTS (ARABIC) -->
+                    <div class="carousel-wrapper">
+                        <button class="carousel-nav-btn carousel-btn-prev" onclick="scrollCarousel('carousel-cancel-ar', -1)">❮</button>
+                        <div id="carousel-cancel-ar" class="carousel-track-container" onscroll="updateStepIndicator('carousel-cancel-ar', 'step-cancel-ar')">
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1bmqhXN8wEGM7f030QfewpRX87zgPNGuK" alt="الخطوة 1"></div>
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1G_etkw7Co2BWvLl3uCyEO_lPKsoiq1cS" alt="الخطوة 2"></div>
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1YYKDrqItiON42oAFAGtwBTn-Ns_Vgjfw" alt="الخطوة 3"></div>
+                            <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/d/1HGUlC8k6fgRIUTqNbnv_07mK8p13_KB3" alt="الخطوة 4"></div>
+                        </div>
+                        <button class="carousel-nav-btn carousel-btn-next" onclick="scrollCarousel('carousel-cancel-ar', 1)">❯</button>
+                        <div id="step-cancel-ar" class="carousel-step-indicator">الخطوة 1 من 4 (اسحب أو انقر الأسهم)</div>
+                    </div>
+
+                </div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">ماذا أفعل إذا لم ينضم الطبيب إلى مكالمة الفيديو؟ <span class="chevron">▼</span></div>
@@ -702,6 +796,24 @@
             searchInput.style.direction = 'rtl';
         }
         filterFAQs();
+    }
+
+    function scrollCarousel(containerId, direction) {
+        const container = document.getElementById(containerId);
+        const slideWidth = container.clientWidth;
+        container.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+    }
+
+    function updateStepIndicator(containerId, indicatorId) {
+        const container = document.getElementById(containerId);
+        const indicator = document.getElementById(indicatorId);
+        const currentStep = Math.round(container.scrollLeft / container.clientWidth) + 1;
+        const totalSteps = container.children.length;
+        if(containerId.includes('-ar')) {
+            indicator.innerText = `الخطوة ${currentStep} من ${totalSteps} (اسحب أو انقر الأسهم)`;
+        } else {
+            indicator.innerText = `Step ${currentStep} of ${totalSteps} (Swipe or click arrows)`;
+        }
     }
 </script>
 </body>
